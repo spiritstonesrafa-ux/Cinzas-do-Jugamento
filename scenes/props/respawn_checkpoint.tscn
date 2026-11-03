@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/props/respawn_checkpoint.gd" id="1_checkpoint"]
+
+[sub_resource type="RectangleShape2D" id="Shape_checkpoint"]
+size = Vector2(18, 32)
+
+[node name="RespawnCheckpoint" type="Area2D"]
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("1_checkpoint")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("Shape_checkpoint")
+
+[node name="RespawnPoint" type="Marker2D" parent="."]
+position = Vector2(-24, 0)

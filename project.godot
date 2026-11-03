@@ -62,6 +62,9 @@ jump={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="SwordAttack"
 2d_physics/layer_4="TrainingTarget"
+2d_physics/layer_5="PlayerHurtbox"
+2d_physics/layer_6="DamageSource"
+2d_physics/layer_7="Checkpoint"
 
 [rendering]
 

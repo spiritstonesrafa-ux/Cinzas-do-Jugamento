@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/props/damage_source.gd" id="1_source"]
+
+[sub_resource type="RectangleShape2D" id="Shape_source"]
+size = Vector2(20, 12)
+
+[node name="DamageSource" type="Area2D"]
+collision_layer = 32
+collision_mask = 16
+monitoring = false
+script = ExtResource("1_source")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("Shape_source")
