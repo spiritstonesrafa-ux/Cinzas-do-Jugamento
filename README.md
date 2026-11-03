@@ -1,3 +1,47 @@
+# Cinzas do Juramento — M4-A: Guardião do Juramento
+
+**M4-A — HOMOLOGADO FUNCIONAL E VISUALMENTE PELO RESPONSÁVEL.**
+
+O selo no final do Portão da Catedral abre um vestíbulo de combate com o
+Guardião: introdução curta, arena travada, barra de vida, perseguição e um golpe
+pesado telegrafado com janela de punição. Arte original com quatro poses; os
+assets e sistemas homologados do M3 foram preservados.
+
+**803 verificações distintas aprovadas:** 735 anteriores reexecutadas, 59 M4-A
+físicas/funcionais e nove de gravação de capturas 4K. As 59 também passaram na
+execução gráfica. Testes não substituem playtest nem medem fluidez prolongada.
+
+Na Godot 4.7.2, F8/F5 reinicia o jogo. Ao concluir a fase, continue à direita
+até o **Selo do Guardião**. Controles originais: A/D ou setas, Espaço/W/cima e J.
+Após a vitória, volte pelo selo à esquerda. Morte usa o checkpoint já ativo;
+queda viva conserva o início original e não cura. Sem novo checkpoint/recompensa.
+
+[Planejamento, resultados, capturas e checklist M4-A](tests/VALIDACAO_M4_A.md) ·
+[Sprite original e prompt image_gen](assets/art/m4a/PROVENANCE.md).
+Homologação registrada; publicação autorizada conforme auditoria Git. M4-B ainda não iniciado.
+
+
+## Homologação informada pelo responsável — 03/11/2026
+
+**Playtest manual: 18/18 PASSOU — Nenhuma observação.**
+
+O responsável aprovou selo, apresentação, aparência, escala, travamento da
+arena, barra de vida, perseguição, golpe telegrafado, esquiva, dano do chefe,
+ataque da espada, reação ao dano, recuperação, derrota, saída, morte durante
+a luta, imagem 4K e estabilidade. A avaliação manual foi realizada e informada
+pelo responsável, não pelo agente.
+
+Preservam-se os resultados técnicos anteriores: **794/794 verificações
+funcionais (735 herdadas + 59 M4-A)** e nove verificações de salvamento de
+capturas 4K, total distinto 803. Importação e inicialização anteriores aprovadas.
+Nenhuma execução da engine foi repetida na etapa de registro e versionamento.
+Os diagnósticos e limitações históricos abaixo permanecem documentados.
+
+Autorizado um único commit M4-A e push fast-forward do histórico homologado.
+M4-B será iniciado somente após confirmar o push; M4-C não iniciado.
+
+## Histórico preservado — M3-E homologado
+
 # M3-E — Homologação funcional registrada
 
 **M3-E — HOMOLOGADO FUNCIONALMENTE PELO RESPONSÁVEL.**
