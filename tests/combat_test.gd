@@ -45,7 +45,7 @@ func _swing() -> void:
 	await _frames(30)
 
 func _run() -> void:
-	_main = (load("res://scenes/main.tscn") as PackedScene).instantiate()
+	_main = (load("res://tests/fixtures/baseline_main.tscn") as PackedScene).instantiate()
 	root.add_child(_main)
 	_stage = _main.get_node("PrototypeStage") as Node2D
 	_knight = _stage.get_node("Knight") as KnightController

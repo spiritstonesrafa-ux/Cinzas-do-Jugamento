@@ -1,4 +1,111 @@
-# Cinzas do Juramento — M2
+# Cinzas do Juramento — M3-A: O Cemitério dos Esquecidos
+
+**M3-A e M3-A-FIX01 homologados funcionalmente pelo responsável em
+03/11/2026.** M0/M1/M2 continuam homologados historicamente. A aprovação
+não inicia M3-B nem autoriza etapas posteriores.
+Baseline conferido: branch `main`, HEAD M2
+`c58690bbb3dfe122bb8e1ff8de05b966f17dd772`, Git inicialmente limpo.
+
+## Jogar o M3-A
+
+Abra `C:\PROJETOS\CINZAS DO JURAMENTO\project.godot` na Godot e pressione **F5**.
+O projeto inicia a nova fase. **A/D ou setas** movimentam, **Espaço/W/seta para
+cima** saltam, **J** usa a espada existente. Não há menu ou áudio.
+
+Percorra os setores da esquerda para a direita:
+
+1. Portões do Cemitério — início seguro e instruções.
+2. Caminho das Lápides — três vãos simples de 32 px.
+3. Jardim dos Mortos — blocos com subida de 24 px e marcação CP1 FUTURO.
+4. Catacumbas — passagem por baixo do teto identificado, descida e escada de saída.
+5. Ponte das Almas — vãos de 32/40/40 px e marcação CP2 FUTURO.
+6. Portão da Catedral — piso seguro e faixa de FIM PROVISÓRIO.
+
+As marcações de checkpoints **não ativam retorno nem curam**. Cair vivo de um
+vão retorna ao início (48,156), sem cura, usando a regra existente de M0/M2.
+A vida, espada e HUD são os componentes existentes, sem mudança de parâmetros.
+Não foram adicionados inimigos, IA, armadilhas, chefe, arte final ou música.
+Tela interna 320×180 e escala inteira preservadas.
+
+O protótipo M0/M1/M2 permanece disponível: abra
+`scenes/levels/prototype_stage.tscn` e pressione **F6** para testar o alvo,
+espinhos e checkpoint antigos. Esses elementos não foram incluídos na nova fase.
+
+## Validação e playtest do M3-A
+
+- Especificação/layout: `docs/M3_A.md`.
+- Resultados, inventário e roteiro histórico de playtest: `tests/VALIDACAO_M3_A.md`.
+- Godot executada: **4.7.2.stable.official.ed1daf0bf**.
+- Importação e inicialização headless concluídas. Regressões: **14 M0 + 36 M1
+  + 59 M2**, zero falhas. Nova suíte: **51 verificações M3-A**, zero falhas.
+- Percurso automatizado contínuo nos dois sentidos, sem teleporte ou reinício
+  durante o percurso; seis quedas e integração de respawn verificadas à parte.
+- Seis capturas renderizadas inspecionadas; sensação de controle e dificuldade
+  não são certificados pelas capturas; a homologação funcional foi informada
+  pelo responsável. Houve aviso de certificados do Windows
+  na captura gráfica; detalhes no relatório.
+
+### Correção M3-A-FIX01 — homologada funcionalmente
+
+O bloco alto das Catacumbas é `CryptRoof`, um teto fora da rota, agora escurecido,
+com borda inferior e indicação “TETO - PASSAGEM ABAIXO”. A ponte teve dois pisos
+alargados e o segundo rebaixado em 8 px; a câmera antecipa os degraus inferiores
+nas Catacumbas. Nenhum parâmetro, controle ou sistema homologado foi alterado.
+
+Medição física: salto de aproximadamente **40,9 px**, deslocamento em piso
+nivelado **70 px correndo / 66,7 px partindo parado**. Os degraus obrigatórios
+sobem no máximo 24 px. A auditoria nova verifica 30 transições dirigidas nos seis
+setores, com quatro aproximações por transição: **120 ensaios físicos** e 35
+verificações. Na regressão final passaram **195 verificações**, sem falhas
+(14 M0 + 36 M1 + 59 M2 + 51 M3-A + 35 de navegabilidade).
+
+Coordenadas antes/depois, resultados pré-correção, limites do teste e checklist:
+`tests/VALIDACAO_M3_A_FIX01.md`. O teste original contínuo passa nos dois sentidos;
+os ensaios locais adicionais usam reposicionamento declarado entre tentativas.
+O responsável informou a homologação funcional conjunta do M3-A e do FIX01.
+Os resultados automatizados continuam separados dessa aprovação humana.
+
+Após importar, execute também:
+
+```powershell
+godot --headless --path . --fixed-fps 60 --log-file .godot/m3a-test.log --script res://tests/cemetery_test.gd
+godot --headless --path . --fixed-fps 60 --log-file .godot/fix01-reachability.log --script res://tests/reachability_test.gd
+```
+
+As três suítes antigas agora carregam `tests/fixtures/baseline_main.tscn`, cópia
+da entrada M2. Só esse caminho foi alterado nos testes antigos; suas verificações
+permanecem idênticas. A nova suíte carrega a entrada real de F5.
+
+## Homologação funcional registrada — 03/11/2026
+
+O responsável informou a **homologação funcional do M3-A e da correção
+M3-A-FIX01** e autorizou registrar a implementação homologada em um único
+commit local. Esta aprovação é atribuída ao responsável, não a um playtest
+realizado pelo agente nesta etapa.
+
+Foram preservados os resultados anteriores: 160 verificações na entrega
+original e 195 na regressão final do FIX01, incluindo 35 verificações de
+navegabilidade com 120 ensaios físicos agregados. Falhas de diagnóstico antes
+da correção, limites dos testes e mensagens de ambiente continuam documentados.
+Nenhum teste da engine foi repetido nesta etapa; foram feitas somente revisões
+de documentação e versionamento. Não houve alteração de jogabilidade.
+
+A homologação é funcional e restrita ao M3-A com FIX01. **M3-B não iniciado**;
+qualquer etapa posterior exige autorização própria. Não há push ou publicação
+no escopo deste registro.
+
+O registro reúne a implementação M3-A e FIX01 em um único commit local,
+sem push, alteração de remoto ou publicação. M3-B/C/D e M4 não iniciados.
+
+---
+
+## Registro histórico M0/M1/M2 — cenário de protótipo
+
+As posições de alvo, espinhos, checkpoint, limite Y=224 e câmera de 960 px
+descritas abaixo referem-se ao protótipo preservado, executado com F6, e não
+ao novo greybox de F5. Relatórios históricos não foram reescritos.
+
+### Entrega histórica M2
 
 Fundação de plataforma 2D para Windows. Aren anda, salta e retorna ao ponto
 inicial após cair. O combate M1 homologado foi preservado; M2 acrescenta vida,

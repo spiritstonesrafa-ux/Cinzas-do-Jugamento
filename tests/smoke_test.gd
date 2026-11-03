@@ -20,7 +20,7 @@ func _check(condition: bool, description: String) -> void:
 		push_error("FAIL: " + description)
 
 func _run() -> void:
-	var scene: PackedScene = load("res://scenes/main.tscn") as PackedScene
+	var scene: PackedScene = load("res://tests/fixtures/baseline_main.tscn") as PackedScene
 	if scene == null:
 		push_error("Cannot load main scene")
 		quit(1)
