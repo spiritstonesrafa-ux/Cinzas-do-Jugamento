@@ -76,6 +76,8 @@ func _run() -> void:
 	var main: Node = (load("res://scenes/main.tscn") as PackedScene).instantiate()
 	root.add_child(main)
 	_stage = main.get_node("ForgottenCemetery") as Node2D
+	# Structural M3-A regression isolates geometry from the new B1 combat layer.
+	_stage.get_node("Enemies").process_mode = Node.PROCESS_MODE_DISABLED
 	_knight = _stage.get_node("Knight") as KnightController
 	_camera = _stage.get_node("Camera2D") as Camera2D
 	await _frames(5)

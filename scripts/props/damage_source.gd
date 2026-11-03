@@ -1,6 +1,9 @@
 class_name DamageSource
 extends Area2D
-## Static test hazard. Each accepted contact costs exactly one health point.
+## M2 contact contract; the default static hazard delivers one health point.
+
+func contact_damage(_receiver_id: int) -> int:
+	return 1
 
 func _draw() -> void:
 	draw_rect(Rect2(-12, -3, 24, 3), Color("693345"))

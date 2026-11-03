@@ -69,8 +69,9 @@ func _physics_process(delta: float) -> void:
 	visual.scale.x = float(facing if sword_attack.phase == SwordAttack.Phase.NEUTRAL else sword_attack.direction)
 	_update_state()
 	visual.queue_redraw()
-	if hurtbox.has_damage_contact():
-		receive_damage()
+	var contact_damage: int = hurtbox.contact_damage()
+	if contact_damage > 0:
+		receive_damage(contact_damage)
 	_update_survival_visual()
 
 func receive_damage(amount: int = 1) -> bool:

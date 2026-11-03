@@ -1,5 +1,5 @@
 class_name TrainingTarget
-extends Area2D
+extends SwordReceiver
 ## Non-solid practice dummy: hit feedback only, no health or offensive behavior.
 
 @export var flash_duration: float = 0.14

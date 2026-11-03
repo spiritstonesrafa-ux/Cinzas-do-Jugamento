@@ -1,3 +1,116 @@
+# Cinzas do Juramento — M3-B1: Esqueleto Patrulheiro
+
+**M3-B1 — HOMOLOGADO FUNCIONALMENTE PELO RESPONSÁVEL.**
+
+**11/11 PASSOU — Nenhuma observação.** Resultado manual informado pelo responsável.
+Baseline: `main`, `3e5a89781788a09f759e1bc21d6931c498cf2470`, árvore inicialmente limpa.
+M0/M1/M2/M3-A/FIX01 permanecem homologados historicamente. A autorização atual
+abrange somente o primeiro inimigo; Corvo, M3-B2/B3 e M3-C não iniciados.
+
+## Jogar e verificar o inimigo
+
+Pare uma execução antiga com F8 e inicie com F5. Use A/D ou setas,
+Espaço/W/cima e J. Há **um** esqueleto em **(744,140)**, no piso plano
+`GraveSlabC` do Caminho das Lápides (X=672–848). Patrulha X=704–784; o spawn
+original fica distante, em (48,156). O mapa, os vãos e a câmera não mudaram.
+
+O esqueleto começa parado e patrulha. Detecta Aren a 85 px, com diferença
+vertical até 18 px e visão sem parede. Persegue a 35 px/s dentro dos mesmos
+limites seguros, parando em bordas e paredes. Ao perder Aren por 0,6 s, volta
+à patrulha. O corpo não bloqueia Aren: é possível passar ou saltar pelo encontro.
+
+A 24 px inicia um golpe com **0,25 s de preparação**, **0,12 s de janela ativa**
+e **0,35 s de recuperação**, com direção fixa e intervalo mínimo entre inícios
+de **1,2 s**. A espada erguida sinaliza preparação, a lâmina horizontal clara
+indica o golpe e a pose abaixada indica recuperação. Apenas a janela ativa
+pode aplicar dano, respeitando paredes e a invulnerabilidade M2 de 0,8 s.
+Contato com o corpo não causa dano. Um golpe válido tira 1 HP de Aren.
+
+**J** utiliza a espada M1 original: cada golpe tira 1 dos **3 HP** do inimigo.
+O esqueleto fica claro e atordoado por 0,18 s; receber o golpe cancela seu ataque.
+Após três acertos válidos ele cai e fica inativo, sem colisões ou loot.
+Ao morrer e reaparecer, ou cair vivo para fora do mapa, Aren retorna pelas
+regras existentes e os inimigos da fase restauram posição, HP, direção,
+temporizadores e colisões iniciais. Não há save de inimigos derrotados.
+
+## Arquivos e integração M3-B1
+
+- `scenes/enemies/skeleton_patrol.tscn`: inimigo reutilizável com corpo, visual,
+  hurtbox de espada e fonte ofensiva separados.
+- `scripts/enemies/skeleton_patrol.gd`: estados IDLE/PATROL/CHASE/ATTACK/HURT/DEAD,
+  HP, limites, visão, bordas, ataque e restauração.
+- `scripts/enemies/skeleton_visual.gd`: caveira, armadura, membros e arma geométricos.
+- `scripts/enemies/skeleton_attack_source.gd`: janela ofensiva, acerto único por
+  alvo por golpe e bloqueio por parede, usando entrega de contato M2.
+- `scripts/combat/sword_receiver.gd`: contrato `receive_hit()` compartilhado pelo
+  alvo original e hurtboxes de inimigos. Espada mantém fases/alcance/deduplicação.
+- `tests/skeleton_test.gd`: encontro real e sondagens de bordas, paredes,
+  múltiplos inimigos, ataques, morte e retorno.
+- `tests/VALIDACAO_M3_B1.md`: auditoria, inventário, comandos e checklist completo.
+
+Valores principais expostos no Inspector: HP 3, dano 1, patrulha 25 px/s,
+perseguição 35 px/s, detecção 85 px, ataque 24 px, intervalo 1,2 s.
+Aren continua com o mesmo controlador, parâmetros, HP e proteção; somente os
+contratos de recepção de espada e de fonte de contato receberam adaptadores.
+
+## Validação automatizada da implementação anterior
+
+Godot **4.7.2.stable.official.ed1daf0bf**. Importação e inicialização headless
+concluíram com código 0. Suítes finais: **14 M0 + 36 M1 + 59 M2 + 52 M3-A +
+35 de navegabilidade + 49 M3-B1 = 245 verificações**, zero falhas.
+
+M3-A tem agora 52 asserções porque o laço original também verifica o novo nó
+`Enemies`. Seus testes estruturais e os de navegabilidade desativam a IA para
+isolar o terreno; o teste M3-B1 verifica o encontro ativo e a passagem sem combate.
+As três suítes M0/M1/M2 não foram editadas. Houve os diagnósticos de ambiente
+já conhecidos sobre certificados e escrita de editor_settings, registrados no relatório.
+Seis capturas gráficas de patrulha/perseguição/ataque/dano/morte foram inspecionadas;
+essas capturas não são um playtest humano. A homologação funcional posterior
+foi realizada pelo responsável e está registrada abaixo.
+
+```powershell
+godot --headless --path . --import
+godot --headless --path . --quit-after 60
+godot --headless --path . --fixed-fps 60 --log-file .godot/b1-skeleton_test.log --script res://tests/skeleton_test.gd
+```
+
+## Homologação manual informada pelo responsável — 03/11/2026
+
+**M3-B1 — HOMOLOGADO FUNCIONALMENTE PELO RESPONSÁVEL.**
+
+**11/11 PASSOU — Nenhuma observação.**
+
+Funcionalidades aprovadas no playtest do responsável:
+
+1. Aparência.
+2. Patrulhamento.
+3. Detecção.
+4. Perseguição.
+5. Ataque.
+6. Dano causado.
+7. Invulnerabilidade.
+8. Dano recebido.
+9. Morte do inimigo.
+10. Restauração após morte ou queda de Aren.
+11. Regressão dos sistemas anteriores.
+
+A homologação acima foi realizada e informada pelo responsável. Ela é distinta
+das 245 verificações automatizadas executadas anteriormente pelo agente,
+incluindo 49 do inimigo, da importação/inicialização e das seis capturas
+renderizadas já registradas. Resultados, diagnósticos de ambiente e limitações
+foram preservados. A engine não foi reexecutada nesta tarefa de documentação
+e versionamento. Nenhum código funcional, cena ou parâmetro foi alterado.
+
+**M3-B2 e o Corvo Amaldiçoado permanecem não iniciados.** A homologação do B1
+não autoriza nova implementação, M3-B3 ou M3-C. Não há push, deploy ou publicação.
+
+Entrega autorizada para um único commit local, sem push, mudança de branch/remoto,
+exportação ou publicação. **Encerrar no M3-B1 e aguardar nova autorização.**
+
+---
+
+## Registro histórico homologado M3-A e FIX01
+
 # Cinzas do Juramento — M3-A: O Cemitério dos Esquecidos
 
 **M3-A e M3-A-FIX01 homologados funcionalmente pelo responsável em

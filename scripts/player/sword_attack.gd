@@ -60,7 +60,7 @@ func _find_hits() -> void:
 	query.collide_with_bodies = false
 	var space: PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
 	for result: Dictionary in space.intersect_shape(query):
-		var target: TrainingTarget = result["collider"] as TrainingTarget
+		var target: SwordReceiver = result["collider"] as SwordReceiver
 		if target == null or _hit_targets.has(target.get_instance_id()):
 			continue
 		if (target.global_position.x - global_position.x) * direction <= 0.0:

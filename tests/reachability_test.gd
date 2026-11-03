@@ -111,6 +111,8 @@ func _run() -> void:
 			layout = argument.trim_prefix("--layout=")
 	_stage = (load(layout) as PackedScene).instantiate() as Node2D
 	root.add_child(_stage)
+	# Isolated jump trials audit terrain; skeleton_test.gd covers live encounters.
+	_stage.get_node("Enemies").process_mode = Node.PROCESS_MODE_DISABLED
 	_knight = _stage.get_node("Knight") as KnightController
 	_camera = _stage.get_node("Camera2D") as Camera2D
 	await _frames(5)

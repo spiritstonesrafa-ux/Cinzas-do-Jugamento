@@ -1,5 +1,5 @@
 extends Node2D
-## M3-A: layout integration only; M0/M1/M2 components remain unchanged.
+## Local M3-A/B1 bindings; homologated terrain, camera and respawn rules retained.
 
 const SECTOR_STARTS: Array[float] = [0.0, 384.0, 768.0, 1152.0, 1536.0, 1984.0]
 const SECTOR_NAMES: Array[String] = [
@@ -18,6 +18,9 @@ func _ready() -> void:
 	process_physics_priority = 1
 	knight.set_default_respawn(spawn.global_position)
 	knight.survival.respawn_requested.connect(knight.respawn_at_checkpoint)
+	knight.survival.respawn_requested.connect(_restore_enemies)
+	for enemy: SkeletonPatrol in $Enemies.get_children():
+		enemy.target = knight
 	$HealthHUD.bind(knight.survival)
 	knight.reset_to(spawn.global_position)
 	_update_presentation()
@@ -26,7 +29,12 @@ func _physics_process(_delta: float) -> void:
 	# Same alive-fall semantics as M0/M2; lower boundary accommodates the crypt.
 	if knight.global_position.y > FALL_LIMIT and not knight.survival.is_dead:
 		knight.reset_to(spawn.global_position)
+		_restore_enemies()
 	_update_presentation()
+
+func _restore_enemies() -> void:
+	for enemy: SkeletonPatrol in $Enemies.get_children():
+		enemy.reset_enemy()
 
 func sector_at(x: float) -> int:
 	for index: int in range(SECTOR_STARTS.size() - 1, -1, -1):
