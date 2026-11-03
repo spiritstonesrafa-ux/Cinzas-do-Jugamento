@@ -1,0 +1,40 @@
+# Godot: generated editor/import cache; keep source .uid files.
+.godot/
+.import/
+export.cfg
+export_credentials.cfg
+
+# Local exports and build output.
+/build/
+/builds/
+/dist/
+/exports/
+
+# Temporary files, logs and local editor/OS state.
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+*.log
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+
+# Local environment, credentials and private keys.
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+*.jks
+credentials.json
+secrets.json
+/secrets/

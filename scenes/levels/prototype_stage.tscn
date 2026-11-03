@@ -1,0 +1,188 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/prototype_stage.gd" id="1_stage"]
+[ext_resource type="PackedScene" path="res://scenes/player/knight.tscn" id="2_knight"]
+[ext_resource type="Script" path="res://scripts/levels/stage_visual.gd" id="3_visual"]
+
+[sub_resource type="RectangleShape2D" id="Shape_FloorWest"]
+size = Vector2(560, 100)
+
+[sub_resource type="RectangleShape2D" id="Shape_FloorEast"]
+size = Vector2(336, 100)
+
+[sub_resource type="RectangleShape2D" id="Shape_WallLeft"]
+size = Vector2(16, 352)
+
+[sub_resource type="RectangleShape2D" id="Shape_WallRight"]
+size = Vector2(16, 352)
+
+[sub_resource type="RectangleShape2D" id="Shape_PlatformLow"]
+size = Vector2(64, 10)
+
+[sub_resource type="RectangleShape2D" id="Shape_PlatformMiddle"]
+size = Vector2(64, 10)
+
+[sub_resource type="RectangleShape2D" id="Shape_PlatformHigh"]
+size = Vector2(64, 10)
+
+[sub_resource type="RectangleShape2D" id="Shape_PlatformEast"]
+size = Vector2(72, 10)
+
+[node name="PrototypeStage" type="Node2D"]
+script = ExtResource("1_stage")
+
+[node name="Backdrop" type="Node2D" parent="."]
+script = ExtResource("3_visual")
+
+[node name="WorldGeometry" type="Node2D" parent="."]
+
+[node name="FloorWest" type="StaticBody2D" parent="WorldGeometry"]
+position = Vector2(0, 156)
+collision_layer = 1
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldGeometry/FloorWest"]
+position = Vector2(280.0, 50.0)
+shape = SubResource("Shape_FloorWest")
+
+[node name="Stone" type="Polygon2D" parent="WorldGeometry/FloorWest"]
+polygon = PackedVector2Array(0, 0, 560, 0, 560, 100, 0, 100)
+color = Color(0.22, 0.28, 0.35, 1)
+
+[node name="Rim" type="Polygon2D" parent="WorldGeometry/FloorWest"]
+polygon = PackedVector2Array(0, 0, 560, 0, 560, 3, 0, 3)
+color = Color(0.47, 0.54, 0.58, 1)
+
+[node name="FloorEast" type="StaticBody2D" parent="WorldGeometry"]
+position = Vector2(624, 156)
+collision_layer = 1
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldGeometry/FloorEast"]
+position = Vector2(168.0, 50.0)
+shape = SubResource("Shape_FloorEast")
+
+[node name="Stone" type="Polygon2D" parent="WorldGeometry/FloorEast"]
+polygon = PackedVector2Array(0, 0, 336, 0, 336, 100, 0, 100)
+color = Color(0.22, 0.28, 0.35, 1)
+
+[node name="Rim" type="Polygon2D" parent="WorldGeometry/FloorEast"]
+polygon = PackedVector2Array(0, 0, 336, 0, 336, 3, 0, 3)
+color = Color(0.47, 0.54, 0.58, 1)
+
+[node name="WallLeft" type="StaticBody2D" parent="WorldGeometry"]
+position = Vector2(-16, -96)
+collision_layer = 1
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldGeometry/WallLeft"]
+position = Vector2(8.0, 176.0)
+shape = SubResource("Shape_WallLeft")
+
+[node name="Stone" type="Polygon2D" parent="WorldGeometry/WallLeft"]
+polygon = PackedVector2Array(0, 0, 16, 0, 16, 352, 0, 352)
+color = Color(0.22, 0.28, 0.35, 1)
+
+[node name="Rim" type="Polygon2D" parent="WorldGeometry/WallLeft"]
+polygon = PackedVector2Array(0, 0, 16, 0, 16, 3, 0, 3)
+color = Color(0.47, 0.54, 0.58, 1)
+
+[node name="WallRight" type="StaticBody2D" parent="WorldGeometry"]
+position = Vector2(960, -96)
+collision_layer = 1
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldGeometry/WallRight"]
+position = Vector2(8.0, 176.0)
+shape = SubResource("Shape_WallRight")
+
+[node name="Stone" type="Polygon2D" parent="WorldGeometry/WallRight"]
+polygon = PackedVector2Array(0, 0, 16, 0, 16, 352, 0, 352)
+color = Color(0.22, 0.28, 0.35, 1)
+
+[node name="Rim" type="Polygon2D" parent="WorldGeometry/WallRight"]
+polygon = PackedVector2Array(0, 0, 16, 0, 16, 3, 0, 3)
+color = Color(0.47, 0.54, 0.58, 1)
+
+[node name="PlatformLow" type="StaticBody2D" parent="WorldGeometry"]
+position = Vector2(144, 124)
+collision_layer = 1
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldGeometry/PlatformLow"]
+position = Vector2(32.0, 5.0)
+shape = SubResource("Shape_PlatformLow")
+
+[node name="Stone" type="Polygon2D" parent="WorldGeometry/PlatformLow"]
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 10, 0, 10)
+color = Color(0.22, 0.28, 0.35, 1)
+
+[node name="Rim" type="Polygon2D" parent="WorldGeometry/PlatformLow"]
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 3, 0, 3)
+color = Color(0.47, 0.54, 0.58, 1)
+
+[node name="PlatformMiddle" type="StaticBody2D" parent="WorldGeometry"]
+position = Vector2(244, 94)
+collision_layer = 1
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldGeometry/PlatformMiddle"]
+position = Vector2(32.0, 5.0)
+shape = SubResource("Shape_PlatformMiddle")
+
+[node name="Stone" type="Polygon2D" parent="WorldGeometry/PlatformMiddle"]
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 10, 0, 10)
+color = Color(0.22, 0.28, 0.35, 1)
+
+[node name="Rim" type="Polygon2D" parent="WorldGeometry/PlatformMiddle"]
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 3, 0, 3)
+color = Color(0.47, 0.54, 0.58, 1)
+
+[node name="PlatformHigh" type="StaticBody2D" parent="WorldGeometry"]
+position = Vector2(350, 72)
+collision_layer = 1
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldGeometry/PlatformHigh"]
+position = Vector2(32.0, 5.0)
+shape = SubResource("Shape_PlatformHigh")
+
+[node name="Stone" type="Polygon2D" parent="WorldGeometry/PlatformHigh"]
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 10, 0, 10)
+color = Color(0.22, 0.28, 0.35, 1)
+
+[node name="Rim" type="Polygon2D" parent="WorldGeometry/PlatformHigh"]
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 3, 0, 3)
+color = Color(0.47, 0.54, 0.58, 1)
+
+[node name="PlatformEast" type="StaticBody2D" parent="WorldGeometry"]
+position = Vector2(738, 120)
+collision_layer = 1
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldGeometry/PlatformEast"]
+position = Vector2(36.0, 5.0)
+shape = SubResource("Shape_PlatformEast")
+
+[node name="Stone" type="Polygon2D" parent="WorldGeometry/PlatformEast"]
+polygon = PackedVector2Array(0, 0, 72, 0, 72, 10, 0, 10)
+color = Color(0.22, 0.28, 0.35, 1)
+
+[node name="Rim" type="Polygon2D" parent="WorldGeometry/PlatformEast"]
+polygon = PackedVector2Array(0, 0, 72, 0, 72, 3, 0, 3)
+color = Color(0.47, 0.54, 0.58, 1)
+
+[node name="Spawn" type="Marker2D" parent="."]
+position = Vector2(48, 156)
+
+[node name="Knight" parent="." instance=ExtResource("2_knight")]
+position = Vector2(48, 156)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 90)
+process_callback = 0
+limit_left = 0
+limit_top = 0
+limit_right = 960
+limit_bottom = 180
+position_smoothing_enabled = false
