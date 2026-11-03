@@ -1,19 +1,24 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/health_hud.gd" id="1_hud"]
+
+[ext_resource type="Script" path="res://scripts/art/health_frame.gd" id="2_frame"]
 
 [node name="HealthHUD" type="CanvasLayer"]
 script = ExtResource("1_hud")
 
+[node name="Frame" type="Node2D" parent="."]
+script = ExtResource("2_frame")
+
 [node name="Life" type="Label" parent="."]
-offset_left = 6.0
-offset_top = 3.0
-offset_right = 90.0
-offset_bottom = 18.0
+offset_left = 19.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 14.0
 mouse_filter = 2
 theme_override_colors/font_color = Color(0.94, 0.88, 0.71, 1)
 theme_override_colors/font_shadow_color = Color(0.05, 0.06, 0.09, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "VIDA 5/5"

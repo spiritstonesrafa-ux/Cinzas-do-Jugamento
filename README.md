@@ -1,3 +1,216 @@
+## Homologação registrada — 03/11/2026
+
+**M3-D — HOMOLOGADO FUNCIONAL E VISUALMENTE PELO RESPONSÁVEL.**
+Abrange M3-D, FIX01, FIX02, FIX03 e DISPLAY01. Aprovação expressamente informada:
+
+> Agora sim, a imagem está boa. E tudo funcionando normal. Essa é a resolução que o jogo deve ter.
+
+Foram aprovados Aren, movimentação/salto/dano, ataque horizontal e integração
+corpo/espada, arte dos seis setores, fundos, HUD, nitidez, funcionamento na TCL
+4K e preservação da jogabilidade. É homologação geral recebida do responsável;
+não significa preenchimento individual de todos os checklists históricos.
+Os resultados automatizados anteriores (último total: 634/634), diagnósticos e
+limitações abaixo são preservados como histórico, sem alegar nova execução.
+
+Baseline PC mantido: referência lógica 320×180, janela 960×540, canvas_items,
+aspecto keep/16:9, escala inteira, Linear em fundos/terreno e Nearest em atores
+/HUD. Adapta-se à janela/tela; não está fixado exclusivamente em 4K.
+
+Referências JPG do usuário e seus sidecars continuam locais, sem staging, pois
+não são recursos runtime. Originais gerados e proveniência são versionados.
+Seleção das capturas históricas do cache preservada em `tests/evidencias/m3d/`;
+evidências detalhadas de DISPLAY01 permanecem no diretório persistente indicado
+no seu relatório. Nenhum cache inteiro é incluído.
+
+Este registro antecede o único commit local M3-D. M3-E será iniciado somente
+após sua validação. Nenhum push autorizado; M4 permanece não iniciado.
+
+## Histórico técnico da implementação (preservado)
+
+# Cinzas do Juramento — M3-D-DISPLAY01
+
+**M3-D-DISPLAY01 — IMPLEMENTADO, PENDENTE DE PLAYTEST E HOMOLOGAÇÃO MANUAL.**
+
+Renderização 2D por `canvas_items`, referência lógica 320×180, janela inicial
+960×540, proporção preservada e escala inteira. Fundos e revestimento do terreno
+usam Linear; atores e HUD mantêm Nearest. Arte, física, câmera, combate,
+colisões, inimigos, perigos e checkpoints preservados.
+
+**634 verificações aprovadas:** 596 de regressão e 38 DISPLAY01. Testes
+não substituem avaliação visual na TCL. A aprovação artística anterior de
+M3-D/FIX01/FIX02/FIX03 foi informada pelo responsável na solicitação atual;
+os registros abaixo permanecem como histórico das respectivas entregas.
+
+[Configuração, evidências, resultados e checklist DISPLAY01](tests/VALIDACAO_M3_D_DISPLAY01.md).
+Trabalho local sem commit/push. M3-E e M4 não iniciados.
+
+## Histórico preservado — M3-D-FIX03
+
+# Cinzas do Juramento — M3-D-FIX03: Ataque horizontal e coesão artística
+
+**M3-D-FIX03 — IMPLEMENTADO, PENDENTE DE PLAYTEST MANUAL E HOMOLOGAÇÃO.**
+
+Aren recebeu oito poses específicas de ataque, com preparação, extensão
+horizontal e recuperação de tronco, braço, mão, espada e capa. O desenho antigo
+da espada foi substituído; a lâmina do novo sprite foi registrada ao alcance
+homologado. **Comando J, dano, hitbox 22×14 e ciclo 0,10/0,10/0,20 s intactos.**
+Idle, corrida, salto, queda e dano do FIX02 foram preservados.
+
+Portões, Lápides, Ponte e Catedral agora usam fundos originais da mesma família
+de materiais do Jardim e das Catacumbas. Pisos e plataformas compartilham
+texturas, e inimigos, espinhos, lâmina e checkpoints usam um atlas original.
+Os seis setores têm arte raster integrada, com sobreposição nas transições;
+geometria, câmera, IA, distribuição e regras de sobrevivência permanecem iguais.
+
+**596 verificações passaram, zero falhas:** 536 anteriores e 60 novas.
+Importação e inicialização concluídas com código 0. Há **103 capturas novas**,
+incluindo 52 quadros consecutivos do ataque, acertos reais em ambos os inimigos
+e dez vistas de transição. A cena conserva 160 nós. Qualidade, fluidez percebida
+e desempenho prolongado aguardam seu playtest; não há homologação antecipada.
+
+[Relatório e checklist de 28 itens](tests/VALIDACAO_M3_D_FIX03.md) ·
+[Origem dos seis PNGs novos e prompts image_gen](assets/art/fix03/PROVENANCE.md).
+A sequência local pode ser aberta em `.godot/fix03_attack_sequence.html`.
+Histórico, assets e resultados dos marcos anteriores foram preservados.
+
+Abra `project.godot` na **Godot 4.7.2**, encerre a execução antiga com F8 e use
+F5. A/D ou setas movem; Espaço/W/cima saltam; J ataca. O M1 inicia ataque
+somente no chão e mantém o golpe já iniciado se Aren saltar, como antes.
+Resolução 320×180, nearest e escala inteira preservados.
+
+**Somente alterações locais, sem staging, commit ou publicação. M3-E e M4
+não iniciados. Aguardar playtest e homologação do responsável.**
+
+---
+
+## Registro da implementação anterior — M3-D-FIX02
+
+# Cinzas do Juramento — M3-D-FIX02: Amostra de direção artística
+
+**M3-D-FIX02 — IMPLEMENTADO, PENDENTE DE PLAYTEST MANUAL E HOMOLOGAÇÃO.**
+
+O Jardim dos Mortos e as Catacumbas receberam uma amostra com **fundos raster
+originais, materiais texturizados e sprites de Aren**, integrada à fase real.
+O Jardim combina árvores retorcidas, folhas secas, monumento de luto,
+mausoléus e uma necrópole distante; a cripta usa pedra irregular, relevos,
+ossários, abóbadas e túneis recuados, com luz fria e focos âmbar.
+
+As duas imagens fornecidas pelo responsável orientaram composição, materiais
+e atmosfera. Seus pixels não são usados pelo jogo. Quatro PNGs novos foram
+gerados com image_gen integrado e estão em `assets/art/fix02/`; os prompts e
+a proveniência constam em [PROVENANCE.md](assets/art/fix02/PROVENANCE.md).
+
+Aren usa oito poses originais, visor âmbar, armadura azul-prateada e capa
+vinho. A espada continua separada e segue as fases homologadas. A HUD ganhou
+retrato, moldura e cinco segmentos de vida; checkpoints receberam uma órbita
+de runas. Corpos físicos, câmera, combate, vida, IA e geometria foram preservados.
+
+**536 verificações aprovadas, zero falhas**: 528 anteriores e oito de integração
+dos novos recursos. Importação e inicialização concluídas com código 0;
+**41 capturas novas** do viewport real. O desempenho em sessão longa e a
+qualidade artística aguardam sua avaliação. Os diagnósticos conhecidos do
+ambiente Windows permanecem documentados.
+
+O foco é validar este recorte; os outros setores mantêm a arte do FIX01,
+com Aren/HUD atualizados. Não se declara equivalência artística às referências
+nem homologação antecipada. [Relatório, evidências e checklist](tests/VALIDACAO_M3_D_FIX02.md).
+
+Abra `project.godot` na Godot **4.7.2**, pare a execução antiga com F8 e use F5.
+Controles: A/D ou setas, Espaço/W/cima e J. Resolução 320×180 e escala inteira.
+**Somente alterações locais; sem staging, commit ou publicação. M3-E e M4 não
+iniciados. Aguardar playtest e homologação manual.**
+
+---
+
+## Registro da implementação anterior — M3-D-FIX01
+
+# Cinzas do Juramento — M3-D-FIX01: Refinamento Visual Avançado
+
+**M3-D-FIX01 — IMPLEMENTADO, PENDENTE DE PLAYTEST MANUAL E HOMOLOGAÇÃO.**
+
+O refinamento diferencia os seis setores: entrada coroada e ornamentada,
+terraços funerários e terra irregular nas Lápides, Jardim com ciprestes,
+capelas e flores fúnebres, Catacumbas com abóbadas e túneis em perspectiva,
+Ponte entre penhascos e névoa inferior e Catedral com vitrais, estandartes,
+contrafortes e luz sugerida. Novas camadas intermediárias reforçam a profundidade;
+os pisos variam entre terra, pedra musgosa, alvenaria úmida e vãos revestidos.
+
+Aren recebeu um elmo com crista partida, ombreira marcada e capa bordada.
+Esqueleto, corvo, perigos e relíquias receberam acabamento adicional. O HUD
+ficou mais compacto, o setor passou para o topo direito e as instruções
+contextuais para uma faixa inferior. Vida, controles, checkpoints e indicação
+de fim provisório continuam informados. Toda a arte permanece original,
+desenhada por código Godot, sem recursos externos.
+
+**528 verificações aprovadas, zero falhas**: 518 anteriores preservadas e dez
+novas de interface. Importação e inicialização concluídas com código 0.
+Produzidas e inspecionadas 37 novas capturas do viewport real, separadas das
+evidências anteriores. Física, combate, vida, IA, posições, colisões, câmera,
+geometria funcional e dificuldade não foram alterados.
+
+A cena tem 160 nós, contra 159 no M3-D anterior. O fundo reutiliza comandos
+enquanto a câmera está parada, com ambiente animado em passos de 7 Hz; textos
+só são redesenhados quando mudam. As medições são amostras curtas e variáveis,
+sem garantia de desempenho em sessão longa ou outra máquina. Os diagnósticos
+conhecidos de certificados e escrita no perfil Windows permanecem documentados.
+
+Abra `project.godot` na **Godot 4.7.2**, pare a execução antiga com F8 e use F5.
+A/D ou setas movimentam, Espaço/W/cima saltam e J ataca. A arte ambiental é
+composta em execução; o editor ainda pode exibir os polígonos provisórios.
+Resolução 320×180 e escala inteira preservadas.
+
+[Relatório do FIX01, resultados, limitações e checklist de 24 itens](tests/VALIDACAO_M3_D_FIX01.md).
+**Somente alterações locais, sem staging, commit ou publicação. M3-E e M4 não
+iniciados. Aguardando playtest e homologação manual do responsável.**
+
+---
+
+## Registro da implementação anterior — M3-D
+
+# Cinzas do Juramento — M3-D: Arte e Ambientação
+
+**M3-D — IMPLEMENTADO, PENDENTE DE PLAYTEST MANUAL E HOMOLOGAÇÃO.**
+
+O Cemitério dos Esquecidos recebeu composição original em grade de pixels:
+pedra e terra texturizadas, portões de ferro, lápides, estátua funerária,
+mausoléus, catacumbas com arcos e ossários, ponte sobre aqueduto arruinado e
+catedral com vitrais quebrados. Céu, lua, ruínas e árvores usam parallax sutil;
+névoa, cinzas e velas completam a ambientação. A paleta combina azuis e cinzas
+frios com vinho, marfim, turquesa e dourado pontuais.
+
+Aren ganhou armadura, capa animada e poses de corrida, salto, queda, ataque,
+dano, morte e reaparecimento. Esqueleto e corvo receberam silhuetas, animações
+e sinais de ataque mais definidos. Armadilhas têm metal e estados distintos;
+checkpoints são relíquias luminosas e a vida ganhou moldura e ícones temáticos.
+Toda a arte desta etapa é desenhada por código Godot, sem assets externos.
+
+Abra `project.godot` na Godot **4.7.2**, encerre a execução anterior com F8 e
+inicie com F5. A arte ambiental é composta em execução; o editor pode ainda
+mostrar os polígonos provisórios. A/D ou setas movimentam, Espaço/W/cima
+saltam e J ataca. Resolução **320×180**, escala inteira e filtro nearest
+preservados. Física, colisores, cenário funcional, câmera, combate, IA,
+distribuição, dano e regras de checkpoints permanecem homologados e intactos.
+
+**518 verificações passaram, zero falhas:** 500 de regressão e 18 novas
+verificações de integridade visual. Importação e inicialização terminaram
+com código 0. A nova suíte também foi executada com renderização gráfica real.
+Foram produzidas 37 capturas após a arte e seis do baseline para comparação;
+a inspeção pelo agente não substitui o playtest do responsável.
+
+Na amostra gráfica de 120 quadros, a cena passou de 157 para 159 nós e de 24
+para 197 chamadas de desenho. A medição curta e com cadência fixa não certifica
+desempenho em outras máquinas. Permanecem os avisos de certificados e de
+escrita das configurações da Godot no perfil Windows, sem erro de script
+identificado nas execuções. Resultados, evidências, limitações e checklist
+manual de 24 itens: [VALIDACAO_M3_D.md](tests/VALIDACAO_M3_D.md).
+
+**Entrega somente local, sem staging, commit ou publicação. M3-E e M4 não
+iniciados. Aguardando playtest e homologação manual do responsável.**
+
+---
+
+## Registro histórico homologado — M3-C
+
 # Cinzas do Juramento — M3-C: Armadilhas e Checkpoints
 
 **M3-C — HOMOLOGADO FUNCIONALMENTE PELO RESPONSÁVEL.**

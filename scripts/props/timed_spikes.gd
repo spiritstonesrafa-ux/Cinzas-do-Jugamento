@@ -34,13 +34,21 @@ func contact_damage(_receiver_id: int) -> int:
 	return 1 if state == State.ACTIVE else 0
 
 func _draw() -> void:
-	var tint: Color = [Color("729f98"),Color("f2c67f"),Color("d79072"),Color("85839b")][state]
-	draw_rect(Rect2(-12,-3,24,3),tint)
+	var tint: Color = [Color("72b9b3"),Color("f3ce8e"),Color("e09583"),Color("7c839f")][state]
+	draw_rect(Rect2(-12,-3,24,3),Color("242a3b"))
+	draw_rect(Rect2(-12,-3,24,1),Color("8b847c"))
+	for x: int in [-11,9]: draw_rect(Rect2(x,-2,2,2),Color("ba9865"))
+	for x: int in [-7,-1,5]: draw_rect(Rect2(x,-2,3,1),tint)
+	for x: int in [-10,-4,2,8]:
+		draw_rect(Rect2(x,-3,3,1),Color("1a202e"))
+	if state==State.SAFE or state==State.RECOVER:
+		for x: int in [-7,5]: draw_rect(Rect2(x,-4,3,1),tint)
 	if state == State.ACTIVE:
-		for x: int in [-12,-4,4]:
-			draw_colored_polygon(PackedVector2Array([Vector2(x,0),Vector2(x+4,-12),Vector2(x+8,0)]),tint)
+		CemeterySpriteArt.draw(self,11,Rect2(-12,-12,24,12),Color(1.25,1.25,1.2,1))
 	elif state == State.WARNING:
-		draw_rect(Rect2(-1,-20,2,7),tint)
-		draw_rect(Rect2(-1,-11,2,2),tint)
-		for x: int in [-8,0,8]:
-			draw_line(Vector2(x,-5),Vector2(x,-8),tint,1)
+		draw_line(Vector2(-11,-5),Vector2(11,-5),Color(tint,0.5),1)
+		draw_rect(Rect2(-3,-22,7,16),Color("191b2d"))
+		draw_rect(Rect2(-1,-21,3,7),tint)
+		draw_rect(Rect2(-1,-12,3,2),Color("fff2d3"))
+		for x: int in [-9,8]:
+			draw_line(Vector2(x,-5),Vector2(x-2,-8),tint,1)

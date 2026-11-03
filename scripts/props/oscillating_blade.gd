@@ -25,12 +25,15 @@ func _physics_process(delta: float) -> void:
 	queue_redraw()
 
 func _draw() -> void:
-	draw_line(anchor - position,Vector2.ZERO,Color("89919e"),1)
-	draw_rect(Rect2(anchor - position - Vector2(3,2),Vector2(6,4)),Color("b9a67a"))
-	var points: PackedVector2Array = PackedVector2Array()
-	for i: int in range(8):
-		points.append(Vector2.from_angle(i * TAU / 8) * 10)
-	draw_circle(Vector2.ZERO,10,Color("cb8d83"))
-	draw_colored_polygon(points,Color("9f7077"))
-	draw_circle(Vector2.ZERO,4,Color("505c70"))
-	draw_line(Vector2(-6,-6),Vector2(6,6),Color("f0d1a2"),1)
+	var top: Vector2 = (anchor-position).round()
+	draw_rect(Rect2(top-Vector2(5,3),Vector2(10,5)),Color("343a4c"))
+	draw_rect(Rect2(top-Vector2(4,3),Vector2(8,1)),Color("a9a9a4"))
+	draw_colored_polygon(PackedVector2Array([top+Vector2(-7,-1),top+Vector2(0,-7),top+Vector2(7,-1),top+Vector2(0,5)]),Color("777d77"))
+	draw_rect(Rect2(top+Vector2(-1,-4),Vector2(3,6)),Color("343f46"))
+	draw_rect(Rect2(top+Vector2(0,-4),Vector2(1,2)),Color("c6b991"))
+	for y: int in range(int(top.y)+3,-7,5):
+		draw_rect(Rect2(-1,y,3,5),Color("151b2a"))
+		draw_line(Vector2(0,y),Vector2(0,y+3),Color("81909a"),1)
+		draw_rect(Rect2(1,y+3,1,1),Color("c5c0a6"))
+	# The authored disc still has exactly the homologated 20px visual diameter.
+	CemeterySpriteArt.draw(self,9,Rect2(-10,-10,20,20),Color(1.3,1.3,1.2,1))

@@ -1,34 +1,19 @@
-extends Node2D
-## Original geometry; no downloaded art or imported skeleton sprites.
-
+extends PixelCanvas
+## FIX03 authored visual poses, bound only to the unchanged skeleton FSM.
 func _draw() -> void:
-	var skeleton: SkeletonPatrol = get_parent() as SkeletonPatrol
-	if skeleton.state == SkeletonPatrol.State.DEAD:
-		draw_set_transform(Vector2(0, -2), -PI / 2.0)
-	var bone: Color = Color("fff5d6") if skeleton.state == SkeletonPatrol.State.HURT else Color("c4c1ac")
-	var step: int = 1 if int(skeleton.position.x / 4.0) % 2 == 0 else -1
-	if skeleton.velocity.x == 0.0:
-		step = 0
-	draw_rect(Rect2(-5, -10, 3, 10 + step), bone)
-	draw_rect(Rect2(2, -10, 3, 10 - step), bone)
-	draw_rect(Rect2(-5, -20, 10, 11), Color("60686d"))
-	for y: int in [-18, -15, -12]:
-		draw_rect(Rect2(-3, y, 7, 1), bone)
-	draw_rect(Rect2(-2, -21, 2, 13), bone)
-	draw_rect(Rect2(-7, -20, 4, 5), Color("786f56"))
-	draw_rect(Rect2(-7, -15, 2, 6), bone)
-	draw_rect(Rect2(4, -20, 3, 9), bone)
-	draw_rect(Rect2(-5, -29, 10, 9), bone)
-	draw_rect(Rect2(-3, -26, 3, 3), Color("252a30"))
-	draw_rect(Rect2(2, -26, 3, 3), Color("252a30"))
-	draw_rect(Rect2(1, -22, 3, 2), Color("252a30"))
-	if skeleton.state == SkeletonPatrol.State.ATTACK:
-		match skeleton.attack_phase:
-			SkeletonPatrol.AttackPhase.WINDUP:
-				draw_rect(Rect2(7, -31, 2, 17), Color("d79072"))
-			SkeletonPatrol.AttackPhase.ACTIVE:
-				draw_rect(Rect2(7, -16, 21, 3), Color("f2be8b"))
-			SkeletonPatrol.AttackPhase.RECOVERY:
-				draw_line(Vector2(7, -12), Vector2(21, -4), Color("8c969b"), 2.0)
-	else:
-		draw_rect(Rect2(7, -14, 2, 14), Color("8c969b"))
+ var actor: SkeletonPatrol=get_parent() as SkeletonPatrol
+ if actor.state==SkeletonPatrol.State.DEAD: draw_set_transform(Vector2(0,-2),-PI/2)
+ var frame: int=(absi(int(actor.position.x/4))%2) if actor.velocity.x!=0 else 0
+ if actor.state==SkeletonPatrol.State.ATTACK:
+  if actor.attack_phase==SkeletonPatrol.AttackPhase.WINDUP: frame=2
+  elif actor.attack_phase==SkeletonPatrol.AttackPhase.ACTIVE: frame=3
+  else: frame=0
+ var tint: Color=Color(1.5,1.5,1.4,1) if actor.state==SkeletonPatrol.State.HURT else Color(1.12,1.12,1.08,1)
+ CemeterySpriteArt.skeleton(self,frame,tint)
+ if frame==2:
+  r(0,-37,2,3,AMBER)
+ elif frame==3:
+  l(Vector2(16,-20),Vector2(27,-19),Color(SILVER,0.45))
+ if actor.state==SkeletonPatrol.State.HURT:
+  l(Vector2(-9,-23),Vector2(-13,-27),AMBER)
+  l(Vector2(9,-7),Vector2(12,-3),LIGHT)

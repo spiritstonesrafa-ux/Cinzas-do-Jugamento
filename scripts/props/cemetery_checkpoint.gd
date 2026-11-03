@@ -15,4 +15,4 @@ func _on_body_entered(body: Node2D) -> void:
 func _draw() -> void:
 	super._draw()
 	for index: int in range(progression_index):
-		draw_line(Vector2(4 + index*4,-30),Vector2(4 + index*4,-24),Color("fff5d6"),1)
+		draw_line(Vector2(-2+index*3,-14),Vector2(-2+index*3,-9),Color("f3ce8e"),1)

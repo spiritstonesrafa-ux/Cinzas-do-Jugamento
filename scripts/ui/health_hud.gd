@@ -9,3 +9,7 @@ func bind(survival: KnightSurvival) -> void:
 
 func _on_health_changed(current: int, maximum: int) -> void:
 	label.text = "VIDA %d/%d" % [current, maximum]
+	$Frame.current = current
+	$Frame.maximum = maximum
+	$Frame.pulse = 0.3
+	$Frame.queue_redraw()

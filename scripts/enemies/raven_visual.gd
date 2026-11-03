@@ -1,25 +1,19 @@
-extends Node2D
-## Original native geometric bird, separate from physical flight and damage.
+extends PixelCanvas
+## FIX03 original raven atlas; existing AI owns time, state, facing and motion.
 func _draw() -> void:
-	var raven: CursedRaven = get_parent() as CursedRaven
-	if raven.state == CursedRaven.State.DEAD:
-		draw_set_transform(Vector2.ZERO, PI / 2.0)
-	var body: Color = Color("d9e6de") if raven.state == CursedRaven.State.HURT else Color("454b62")
-	var wing: float = -11.0 if int(raven.flight_time * 8) % 2 == 0 else 5.0
-	if raven.state == CursedRaven.State.DIVE:
-		wing = -3.0
-	if raven.state == CursedRaven.State.DEAD:
-		wing = 2.0
-	draw_colored_polygon(PackedVector2Array([Vector2(-3, -2), Vector2(-13, wing), Vector2(-8, 4), Vector2(1, 3)]), body)
-	draw_rect(Rect2(-6, -4, 13, 9), body)
-	draw_rect(Rect2(3, -7, 8, 7), body)
-	draw_colored_polygon(PackedVector2Array([Vector2(10,-4), Vector2(16,-1), Vector2(10,0)]), Color("b9a67a"))
-	draw_line(Vector2(-6, 2), Vector2(-12, 5), body, 3.0)
-	draw_rect(Rect2(7, -5, 2, 2), Color("ef816f"))
-	if raven.state == CursedRaven.State.ALERT:
-		draw_rect(Rect2(0, -18, 2, 6), Color("f3bc72"))
-		draw_rect(Rect2(0, -10, 2, 2), Color("f3bc72"))
-	elif raven.state == CursedRaven.State.DIVE:
-		draw_line(Vector2(-15, -3), Vector2(-8, -3), Color("cf8b9f"), 1.0)
-	elif raven.state == CursedRaven.State.RECOVER:
-		draw_rect(Rect2(-3, -1, 3, 1), Color("8b9ca5"))
+ var bird: CursedRaven=get_parent() as CursedRaven
+ if bird.state==CursedRaven.State.DEAD: draw_set_transform(Vector2.ZERO,PI/2)
+ var frame: int=[0,1,2,1][int(bird.flight_time*10)%4]
+ if bird.state==CursedRaven.State.DIVE: frame=3
+ var tint: Color=Color(1.5,1.5,1.5,1) if bird.state==CursedRaven.State.HURT else Color(1.15,1.15,1.2,1)
+ CemeterySpriteArt.raven(self,frame,tint)
+ if bird.state==CursedRaven.State.ALERT:
+  r(-2,-28,5,12,INK)
+  r(0,-27,2,6,AMBER)
+  r(0,-19,2,2,LIGHT)
+ elif bird.state==CursedRaven.State.DIVE:
+  l(Vector2(-17,-4),Vector2(-11,-4),Color("cf8a95"))
+ elif bird.state==CursedRaven.State.RECOVER:
+  r(-2,-18,4,1,TEAL)
+ elif bird.state==CursedRaven.State.HURT:
+  l(Vector2(-10,-9),Vector2(-13,-13),AMBER)

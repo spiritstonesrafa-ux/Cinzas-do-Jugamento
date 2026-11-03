@@ -81,16 +81,5 @@ func _blocked_by_world(space: PhysicsDirectSpaceState2D, target_x: float) -> boo
 	return not space.intersect_shape(query, 1).is_empty()
 
 func _draw() -> void:
-	if phase == Phase.NEUTRAL:
-		return
-	draw_set_transform(Vector2.ZERO, 0.0, Vector2(float(direction), 1.0))
-	match phase:
-		Phase.WINDUP:
-			draw_rect(Rect2(5, -31, 3, 18), Color("a5b5bd"))
-			draw_rect(Rect2(2, -15, 9, 2), Color("c49b60"))
-		Phase.ACTIVE:
-			draw_rect(Rect2(7, -17, 21, 5), Color("e6dfba"))
-			draw_rect(Rect2(8, -20, 2, 12), Color("c49b60"))
-		Phase.RECOVERY:
-			draw_line(Vector2(6, -12), Vector2(22, -3), Color("778798"), 3.0)
-			draw_rect(Rect2(5, -15, 3, 7), Color("9a7d59"))
+	# FIX03: integrated body/hand/blade are drawn once by KnightVisual.
+	pass
