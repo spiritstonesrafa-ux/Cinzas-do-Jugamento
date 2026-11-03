@@ -19,8 +19,11 @@ func _ready() -> void:
 	knight.set_default_respawn(spawn.global_position)
 	knight.survival.respawn_requested.connect(knight.respawn_at_checkpoint)
 	knight.survival.respawn_requested.connect(_restore_enemies)
-	for enemy: SkeletonPatrol in $Enemies.get_children():
-		enemy.target = knight
+	for enemy: Node in $Enemies.get_children():
+		if enemy is SkeletonPatrol:
+			(enemy as SkeletonPatrol).target = knight
+		elif enemy is CursedRaven:
+			(enemy as CursedRaven).target = knight
 	$HealthHUD.bind(knight.survival)
 	knight.reset_to(spawn.global_position)
 	_update_presentation()
@@ -33,8 +36,11 @@ func _physics_process(_delta: float) -> void:
 	_update_presentation()
 
 func _restore_enemies() -> void:
-	for enemy: SkeletonPatrol in $Enemies.get_children():
-		enemy.reset_enemy()
+	for enemy: Node in $Enemies.get_children():
+		if enemy is SkeletonPatrol:
+			(enemy as SkeletonPatrol).reset_enemy()
+		elif enemy is CursedRaven:
+			(enemy as CursedRaven).reset_enemy()
 
 func sector_at(x: float) -> int:
 	for index: int in range(SECTOR_STARTS.size() - 1, -1, -1):

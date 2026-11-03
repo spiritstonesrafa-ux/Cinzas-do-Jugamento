@@ -1,3 +1,115 @@
+# Cinzas do Juramento — M3-B2: Corvo Amaldiçoado
+
+**M3-B2 — HOMOLOGADO FUNCIONALMENTE PELO RESPONSÁVEL.**
+
+**Playtest manual: 14/14 PASSOU — Nenhuma observação.**
+Resultado realizado e informado pelo responsável, distinto das verificações do agente.
+Baseline: `main`, `3d3bf96e57f4c619684152e5a93da9c88ad3a039`, árvore inicialmente limpa.
+Os marcos anteriores permanecem homologados historicamente. M3-B3 e marcos
+posteriores não foram iniciados. Entrega autorizada para um único commit local,
+sem push, deploy, exportação ou publicação.
+
+## Jogar e contra-atacar
+
+Pare uma execução antiga com F8 e inicie com F5. Há um único **CursedRaven** em
+**(1050,112)**, sobre o piso seguro do Jardim dos Mortos (setor 3/6). Sua patrulha
+horizontal vai de X=1030 a 1070. O esqueleto original continua nas Lápides.
+O terreno, a câmera, os comandos e os parâmetros de Aren foram preservados.
+
+O corvo voa sem causar dano por contato em IDLE/PATROL. Ao detectar Aren apoiado
+no chão, visível e até 110 px de distância, mostra **!** e para por **0,45 s**.
+A posição-alvo fica fixada nesse momento; a investida não acompanha a esquiva.
+Afaste-se lateralmente durante o aviso. O corpo voa em linha reta a **85 px/s**,
+por até 96 px, parando ao chegar ao ponto previsto ou encontrar um sólido.
+Somente DIVE ativa a fonte de dano; um contato válido causa **1 HP**, respeitando
+os **0,8 s** de proteção M2, sem repetir dano no mesmo ataque.
+
+Depois da investida, há uma pausa baixa e inofensiva de **0,55 s** para o
+contra-ataque. Vire-se para o corvo e use **J** com Aren no chão. Ele tem **2 HP**;
+dois golpes M1 válidos o derrotam. Um acerto o deixa claro e interrompe o ataque.
+A espada não ganhou alcance ou ataque vertical. O teste físico confirmou a
+esquiva e os dois contra-ataques tanto pela esquerda quanto pela direita.
+
+Após a pausa, o corvo retorna fisicamente à origem a 24 px/s. RECOVER inclui
+essa viagem, portanto pode durar mais que 0,55 s. O intervalo mínimo entre
+avisos é 1,8 s; não há nova investida antes de voltar à patrulha. Se sair da
+tela durante o aviso, a investida é cancelada. Paredes também bloqueiam visão.
+A aquisição exige apoio no chão e diferença vertical do alvo de até 48 px;
+a esquiva continua livre durante o aviso/investida.
+
+O corpo do corvo não bloqueia Aren. É possível evitar o encontro e prosseguir.
+Derrotado, ele permanece inclinado e inativo até a restauração do cenário.
+Ao morrer ou cair fora do mapa, Aren mantém as regras M2/B1 e os dois inimigos
+restauram posição, HP, direção, temporizadores e colisores iniciais.
+
+## Arquivos e validação M3-B2
+
+- `scenes/enemies/cursed_raven.tscn`: corpo 14×10, SwordReceiver e fonte M2 separados.
+- `scripts/enemies/cursed_raven.gd`: estados IDLE/PATROL/ALERT/DIVE/RECOVER/HURT/DEAD.
+- `scripts/enemies/raven_attack_source.gd`: contrato DamageSource existente,
+  janela ativa e consumo único do contato por investida.
+- `scripts/enemies/raven_visual.gd`: corpo, bico, asas, olhos e poses originais.
+- `tests/raven_test.gd`: testes físicos de rotina, espada, dano, colisões,
+  visibilidade, esquiva, retorno e travessia nos dois sentidos.
+- `tests/VALIDACAO_M3_B2.md`: auditoria, resultados, inventário e checklist manual.
+
+Resultados da implementação anterior, preservados neste registro:
+Godot **4.7.2.stable.official.ed1daf0bf**. As suítes executadas passaram em
+**308 verificações**, sem falhas: 14 M0 + 36 M1 + 59 M2 + 52 M3-A + 35 de
+navegabilidade + 49 M3-B1 + 63 M3-B2. Os testes anteriores não foram editados.
+As duas suítes estruturais continuam isolando a IA; as suítes dos inimigos
+verificam os encontros ativos. Importação e inicialização concluíram com código 0.
+Persistiram os diagnósticos de certificados/perfil já documentados.
+Sete capturas renderizadas foram inspecionadas, incluindo duas poses de asas;
+essas capturas não constituem playtest humano ou homologação automática.
+A engine e as suítes não foram reexecutadas nesta etapa de documentação e
+versionamento; somente os registros documentais foram atualizados.
+
+```powershell
+godot --headless --path . --import
+godot --headless --path . --quit-after 60
+godot --headless --path . --fixed-fps 60 --log-file .godot/b2-raven_test.log --script res://tests/raven_test.gd
+```
+
+Os padrões configuráveis incluem HP 2, dano 1, patrulha 24 px/s, investida
+85 px/s, detecção 110 px, aviso 0,45 s, intervalo 1,8 s e pausa de recuperação
+0,55 s. Não foi alterado nenhum sistema de Aren ou combate do esqueleto.
+
+## Homologação manual informada pelo responsável — 03/11/2026
+
+**M3-B2 — HOMOLOGADO FUNCIONALMENTE PELO RESPONSÁVEL.**
+
+**Playtest manual: 14/14 PASSOU — Nenhuma observação.**
+
+Funcionalidades aprovadas no playtest do responsável:
+
+1. Aparência.
+2. Patrulhamento aéreo.
+3. Detecção.
+4. Aviso do ataque.
+5. Investida.
+6. Esquiva.
+7. Dano causado.
+8. Invulnerabilidade.
+9. Contra-ataque.
+10. Morte do Corvo.
+11. Recuperação.
+12. Restauração.
+13. Integração com sistemas anteriores.
+14. Progressão pelo cenário.
+
+A aprovação foi realizada e informada pelo responsável; não é uma auditoria
+independente do agente. Preservados os resultados automatizados anteriores,
+os testes físicos nos dois sentidos, as sete capturas, os diagnósticos e as
+limitações técnicas. Código, IA, parâmetros, cenas e posicionamento não foram
+alterados nesta etapa. M3-B3 permanece não iniciado.
+
+**Encerrar após o único commit local do M3-B2; aguardar nova autorização.**
+
+---
+
+## Registro histórico homologado M3-B1
+
 # Cinzas do Juramento — M3-B1: Esqueleto Patrulheiro
 
 **M3-B1 — HOMOLOGADO FUNCIONALMENTE PELO RESPONSÁVEL.**

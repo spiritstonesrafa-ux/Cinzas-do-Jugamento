@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3]
+[gd_scene load_steps=26 format=3]
 
 [ext_resource type="Script" path="res://scripts/levels/forgotten_cemetery.gd" id="1_stage"]
 [ext_resource type="PackedScene" path="res://scenes/player/knight.tscn" id="2_knight"]
 [ext_resource type="PackedScene" path="res://scenes/ui/health_hud.tscn" id="3_hud"]
 [ext_resource type="Script" path="res://scripts/levels/cemetery_visual.gd" id="4_visual"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/skeleton_patrol.tscn" id="5_enemy"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/cursed_raven.tscn" id="6_raven"]
 
 [sub_resource type="RectangleShape2D" id="Shape_GateFloor"]
 size = Vector2(448, 164)
@@ -75,6 +76,9 @@ script = ExtResource("4_visual")
 
 [node name="SkeletonPatrol" parent="Enemies" instance=ExtResource("5_enemy")]
 position = Vector2(744, 140)
+
+[node name="CursedRaven" parent="Enemies" instance=ExtResource("6_raven")]
+position = Vector2(1050, 112)
 
 [node name="GateFloor" type="StaticBody2D" parent="WorldGeometry"]
 position = Vector2(0, 156)
