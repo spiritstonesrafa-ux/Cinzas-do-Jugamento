@@ -1,3 +1,105 @@
+# Cinzas do Juramento — M3-B3: Distribuição dos inimigos
+
+**M3-B3 — HOMOLOGADO FUNCIONALMENTE PELO RESPONSÁVEL.**
+
+**Playtest manual: 10/10 PASSOU — Nenhuma observação.**
+Resultado realizado e informado pelo responsável, distinto das verificações do agente.
+Baseline conferido: `main`, `56988ead853f65ad19a30036ce534ad5db32d030`,
+árvore e índice inicialmente limpos. Os marcos anteriores permanecem homologados.
+
+Abra `project.godot`, pare uma execução antiga com F8 e inicie com F5.
+A/D ou setas movimentam; Espaço/W/cima saltam; J usa a espada.
+
+| Setor | Encontro | Coordenadas iniciais |
+|---|---|---|
+| 1 — Portões | Nenhum; introdução segura | — |
+| 2 — Lápides | Esqueleto original | (744,140) |
+| 3 — Jardim | Corvo original | (1050,112) |
+| 4 — Catacumbas | Um esqueleto no piso central | (1328,220) |
+| 5 — Ponte | Um corvo no acesso firme, antes dos vãos | (1552,112) |
+| 6 — Catedral | Esqueleto e corvo, separáveis por posição | (2120,156), (2188,112) |
+
+São seis inimigos: três de cada espécie. Nas Catacumbas foi usado um esqueleto,
+em vez dos dois propostos, para preservar recuo e aterrissagens no piso de 160 px.
+Não há inimigos nas escadas. Na Ponte, o corvo tem detecção local de 38 px e
+patrulha de ±8 px: o combate acontece no piso X=1504–1600. É possível esquivar
+lateralmente, virar e contra-atacar no chão antes de iniciar os saltos.
+Não salte antecipadamente apenas pelo aviso se isso prejudicar sua saída da borda.
+
+No último setor, aproxime o esqueleto pela esquerda e resolva a ameaça terrestre
+antes de avançar até o corvo. No retorno, é possível inverter a ordem. Os testes
+físicos concluíram ambas as sequências com zero dano, duas vezes cada, sem
+reposicionar Aren, curar ou reiniciar inimigos entre os dois combates.
+Ao inverter uma caminhada para esquivar, considere a frenagem original de Aren.
+
+Não foram alterados HP, dano, velocidades, temporizações ou código global dos
+inimigos. Somente limites e alcances de instâncias novas foram ajustados.
+Física de Aren, espada, sobrevivência, restauração, geometria, câmera e marcadores
+provisórios permanecem intactos. Não há checkpoints novos, armadilhas ou chefe.
+
+## Validação da implementação anterior do M3-B3
+
+Godot **4.7.2.stable.official.ed1daf0bf**: importação e inicialização concluídas,
+código 0. **423 verificações aprovadas, zero falhas**: 14 M0 + 36 M1 + 59 M2 +
+52 M3-A + 35 FIX01 + 49 M3-B1 + 63 M3-B2 + **115 M3-B3**.
+A suíte M3-B2 recebeu somente a atualização da quantidade planejada para seis;
+suas 63 verificações foram mantidas. As outras suítes antigas não foram editadas.
+
+O percurso contínuo com todos os inimigos ativos completou ida e volta, sem
+teleporte, cura, morte ou retorno durante o percurso: **5→5 HP na ida e 5→4 na
+volta**. Um retorno independente, iniciado com os seis inimigos vivos, passou
+**5→5 HP**. Os ensaios locais de Catacumbas e Ponte passaram sem dano nos dois lados.
+Isso demonstra estratégias controladas; não certifica ausência de dano em
+qualquer abordagem nem substitui o balanceamento pelo responsável.
+
+Oito capturas renderizadas dos setores/ponte foram inspecionadas. Persistem os
+diagnósticos conhecidos de certificados e escrita de configuração no perfil,
+sem erros observados de script/recurso. Evidências, parâmetros por instância,
+limitações, roteiro histórico de 16 itens e homologação recebida: `tests/VALIDACAO_M3_B3.md`.
+
+```powershell
+godot --headless --path . --import
+godot --headless --path . --quit-after 60
+godot --headless --path . --fixed-fps 60 --log-file .godot/b3-distribution_test.log --script res://tests/distribution_test.gd
+```
+
+## Homologação manual informada pelo responsável — 03/11/2026
+
+**M3-B3 — HOMOLOGADO FUNCIONALMENTE PELO RESPONSÁVEL.**
+
+**Playtest manual: 10/10 PASSOU — Nenhuma observação.**
+
+Funcionalidades aprovadas no playtest completo realizado pelo responsável:
+
+1. Setor inicial seguro.
+2. Caminho das Lápides.
+3. Jardim dos Mortos.
+4. Catacumbas.
+5. Ponte das Almas.
+6. Portão da Catedral.
+7. Percurso de ida e volta.
+8. Morte e restauração.
+9. Regressão e câmera.
+10. Dificuldade geral.
+
+A homologação foi realizada e informada pelo responsável. Não constitui uma
+auditoria independente do agente nem uma nova execução dos testes automatizados.
+Preservados os resultados anteriores: 423 verificações, incluindo 115 M3-B3,
+ida 5→5 HP, volta 5→4 HP, retorno independente 5→5 HP e encontro final sem dano
+nas duas ordens, duas vezes cada. Importação/inicialização, oito capturas,
+diagnósticos Windows e limitações técnicas permanecem documentados.
+
+Nesta etapa somente README e relatório foram atualizados. Engine e suítes não
+foram reexecutadas. Código, cenas, coordenadas, limites de patrulha, atributos,
+IA e balanceamento homologados foram preservados. M3-C permanece não iniciado.
+
+Entrega autorizada para um único commit local. **Sem push, deploy ou publicação.**
+**M3-C e marcos posteriores não iniciados; aguardar nova autorização.**
+
+---
+
+## Registro histórico homologado M3-B2
+
 # Cinzas do Juramento — M3-B2: Corvo Amaldiçoado
 
 **M3-B2 — HOMOLOGADO FUNCIONALMENTE PELO RESPONSÁVEL.**

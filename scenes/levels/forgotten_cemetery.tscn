@@ -80,6 +80,29 @@ position = Vector2(744, 140)
 [node name="CursedRaven" parent="Enemies" instance=ExtResource("6_raven")]
 position = Vector2(1050, 112)
 
+[node name="CryptSkeleton" parent="Enemies" instance=ExtResource("5_enemy")]
+position = Vector2(1328, 220)
+detection_distance = 65.0
+patrol_left = -32.0
+patrol_right = 32.0
+
+[node name="BridgeRaven" parent="Enemies" instance=ExtResource("6_raven")]
+position = Vector2(1552, 112)
+detection_distance = 38.0
+patrol_half_width = 8.0
+max_dive_distance = 48.0
+
+[node name="CathedralSkeleton" parent="Enemies" instance=ExtResource("5_enemy")]
+position = Vector2(2120, 156)
+patrol_left = -28.0
+patrol_right = 28.0
+
+[node name="CathedralRaven" parent="Enemies" instance=ExtResource("6_raven")]
+position = Vector2(2188, 112)
+detection_distance = 72.0
+patrol_half_width = 12.0
+max_dive_distance = 80.0
+
 [node name="GateFloor" type="StaticBody2D" parent="WorldGeometry"]
 position = Vector2(0, 156)
 collision_layer = 1

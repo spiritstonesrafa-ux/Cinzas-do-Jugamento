@@ -93,7 +93,7 @@ func _run() -> void:
 	_skeleton = _stage.get_node("Enemies/SkeletonPatrol") as SkeletonPatrol
 	_raven.defeated.connect(func() -> void: _defeats += 1)
 	_check(_raven.state == CursedRaven.State.IDLE and _raven.current_health == 2, "Initial raven is IDLE with 2 HP")
-	_check(_stage.get_node("Enemies").get_child_count() == 2, "Exactly one raven coexists with original skeleton")
+	_check(_stage.get_node("Enemies").get_child_count() == 6 and _stage.get_node("Enemies/CursedRaven") == _raven and _stage.get_node("Enemies/SkeletonPatrol") == _skeleton, "Six planned B3 instances coexist with the preserved original raven and skeleton")
 	_check(_raven.origin == Vector2(1050,112) and _raven.target == _knight, "Safe Garden origin and local target binding")
 	_check(_raven.patrol_speed == 24 and _raven.dive_speed == 85 and _raven.alert_duration == 0.45 and _raven.attack_interval == 1.8, "Requested movement/timing defaults")
 	_check(_raven.attack_source.shape.disabled, "No contact damage in initial hover")
