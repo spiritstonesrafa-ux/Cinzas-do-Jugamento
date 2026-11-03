@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://scripts/player/knight_controller.gd" id="1_controller"]
 [ext_resource type="Script" path="res://scripts/player/knight_visual.gd" id="2_visual"]
+[ext_resource type="Script" path="res://scripts/player/sword_attack.gd" id="3_attack"]
 
 [sub_resource type="RectangleShape2D" id="Shape_body"]
 size = Vector2(12, 24)
+
+[sub_resource type="RectangleShape2D" id="Shape_attack"]
+size = Vector2(22, 14)
 
 [node name="Knight" type="CharacterBody2D"]
 collision_layer = 2
@@ -18,3 +22,17 @@ shape = SubResource("Shape_body")
 
 [node name="Visual" type="Node2D" parent="."]
 script = ExtResource("2_visual")
+
+[node name="SwordAttack" type="Node2D" parent="."]
+script = ExtResource("3_attack")
+
+[node name="Hitbox" type="Area2D" parent="SwordAttack"]
+position = Vector2(17, -14)
+collision_layer = 4
+collision_mask = 8
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordAttack/Hitbox"]
+shape = SubResource("Shape_attack")
+disabled = true

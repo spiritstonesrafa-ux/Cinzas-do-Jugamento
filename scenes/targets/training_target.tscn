@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/targets/training_target.gd" id="1_target"]
+
+[sub_resource type="RectangleShape2D" id="Shape_target"]
+size = Vector2(14, 24)
+
+[node name="TrainingTarget" type="Area2D"]
+collision_layer = 8
+collision_mask = 4
+monitoring = false
+script = ExtResource("1_target")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -17)
+shape = SubResource("Shape_target")

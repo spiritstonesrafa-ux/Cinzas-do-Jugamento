@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=13 format=3]
 
 [ext_resource type="Script" path="res://scripts/levels/prototype_stage.gd" id="1_stage"]
 [ext_resource type="PackedScene" path="res://scenes/player/knight.tscn" id="2_knight"]
 [ext_resource type="Script" path="res://scripts/levels/stage_visual.gd" id="3_visual"]
+[ext_resource type="PackedScene" path="res://scenes/targets/training_target.tscn" id="4_target"]
 
 [sub_resource type="RectangleShape2D" id="Shape_FloorWest"]
 size = Vector2(560, 100)
@@ -174,6 +175,9 @@ color = Color(0.47, 0.54, 0.58, 1)
 
 [node name="Spawn" type="Marker2D" parent="."]
 position = Vector2(48, 156)
+
+[node name="TrainingTarget" parent="." instance=ExtResource("4_target")]
+position = Vector2(112, 156)
 
 [node name="Knight" parent="." instance=ExtResource("2_knight")]
 position = Vector2(48, 156)
