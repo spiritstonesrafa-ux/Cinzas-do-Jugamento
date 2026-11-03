@@ -2,6 +2,8 @@
 extends Node2D
 ## Original greybox notation only. White rims belong to solid scene geometry.
 
+@export var show_future_checkpoint_marks: bool = true
+
 func _draw() -> void:
 	draw_rect(Rect2(0, 0, 2368, 320), Color("15191f"))
 	var starts: Array[int] = [0, 384, 768, 1152, 1536, 1984]
@@ -22,11 +24,12 @@ func _draw() -> void:
 		draw_rect(Rect2(x - 3, 106, 20, 4), Color("363d44"))
 	draw_rect(Rect2(1152, 64, 352, 224), Color("1d242c"))
 	# Dashed outlines identify future checkpoint space without an active flag.
-	for x: int in [1040, 1936]:
-		for y: int in range(122, 154, 8):
-			draw_rect(Rect2(x - 10, y, 2, 4), Color("c1a66d"))
-			draw_rect(Rect2(x + 10, y, 2, 4), Color("c1a66d"))
-		draw_line(Vector2(x - 10, 154), Vector2(x + 12, 154), Color("c1a66d"), 2)
+	if show_future_checkpoint_marks:
+		for x: int in [1040, 1936]:
+			for y: int in range(122, 154, 8):
+				draw_rect(Rect2(x - 10, y, 2, 4), Color("c1a66d"))
+				draw_rect(Rect2(x + 10, y, 2, 4), Color("c1a66d"))
+			draw_line(Vector2(x - 10, 154), Vector2(x + 12, 154), Color("c1a66d"), 2)
 	draw_rect(Rect2(34, 151, 28, 4), Color("9eaf93"))
 	draw_rect(Rect2(2256, 151, 64, 4), Color("c1a66d"))
 	# Readable pit lips. These marks have no independent gameplay behavior.

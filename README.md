@@ -1,3 +1,122 @@
+# Cinzas do Juramento — M3-C: Armadilhas e Checkpoints
+
+**M3-C — HOMOLOGADO FUNCIONALMENTE PELO RESPONSÁVEL.**
+
+**Playtest manual: 22/22 PASSOU — Nenhuma observação.**
+Homologação realizada e informada pelo responsável, distinta dos testes anteriores.
+
+A versão homologada M3-B3 foi publicada na `main` do repositório
+[Cinzas-do-Jugamento](https://github.com/spiritstonesrafa-ux/Cinzas-do-Jugamento),
+no commit **3695eb2b350837cc7622e025e2d05c350b3e2ffc**. A união autorizada
+preservou os históricos do projeto e da licença MIT, sem force push.
+**M3-C autorizado para um único commit local; sem push ou publicação desta entrega.**
+
+Abra `project.godot` na Godot 4.7.2, pare a execução antiga com F8 e inicie com F5.
+A/D ou setas movimentam, Espaço/W/cima saltam e J usa a espada existente.
+
+| Elemento | Posição | Como atravessar/usar |
+|---|---|---|
+| Espinhos fixos — entrada do Jardim | (824,140) | Saltar da parte plana para o desnível, nos dois sentidos. |
+| Lâmina vertical — Catacumbas | origem (1384,176), Y=148–204 | Observar e caminhar quando a lâmina estiver alta; corrente não causa dano. |
+| Espinhos temporizados — Catedral | (2016,156) | Observar SAFE → WARNING (!) → ACTIVE → RECOVER; esperar ou saltar. |
+| CP1 — saída do Jardim/primeiro degrau das Catacumbas | (1176,180) | Bandeira I ativa automaticamente ao contato. |
+| CP2 — piso firme após a Ponte | (1936,156) | Bandeira II substitui CP1 e permanece válida no retorno. |
+
+Há **três armadilhas e dois checkpoints**. Portões e Lápides não receberam
+armadilhas; os vãos e aterrissagens da Ponte também ficaram livres. Os seis
+inimigos mantêm exatamente as posições, atributos, detecção e patrulhas homologadas.
+
+A lâmina tem raio perigoso de 10 px, curso vertical de ±28 px e período de 2,8 s.
+A grade temporizada usa 1,5 s segura, 0,6 s de aviso, 0,8 s ativa e 0,4 s de
+recuperação. Somente ACTIVE possui área perigosa. Cada contato válido retira
+1 HP pelo M2; a proteção continua 0,8 s. Permanecer sobre um perigo pode causar
+novo dano após essa proteção expirar, conforme a regra original.
+
+As bandeiras mudam de azul para âmbar ao ativar. Não é preciso apertar um botão.
+Ao morrer, Aren retorna ao checkpoint válido mais avançado e recupera 5 HP.
+Atravessar CP1 depois de CP2 não retrocede a progressão. **Cair vivo continua
+retornando ao início (48,156), sem curar HP e sem apagar o checkpoint ativo.**
+Morte e queda restauram os inimigos e as fases das armadilhas; CPs são locais à
+sessão, sem save persistente. O antigo marcador CP1 em (1040,156) era inseguro
+por estar no encontro do corvo; a posição efetiva usa o primeiro degrau seguro
+após o Jardim. CP2 aproveita o piso largo já marcado após os vãos.
+
+## Resultados da implementação anterior
+
+**500 verificações passaram, zero falhas**: as 423 anteriores e **77 M3-C**.
+Importação e inicialização concluíram com código 0. As regressões anteriores
+usam uma fixture preservada do cenário B3, com todas as asserções mantidas;
+a suíte nova carrega o cenário M3-C real e cobre armadilhas, checkpoints,
+restauração, combate e travessia com os seis inimigos ativos.
+
+No percurso contínuo M3-C: **ida 5→4 HP, volta 4→3 HP**, sem morte, cura,
+teleporte ou reset durante o percurso. Ensaios locais passaram sem dano pelos
+três perigos nos dois sentidos; o encontro final com a grade funcionando também
+passou sem dano. Isso não certifica ausência de dano em qualquer abordagem.
+Onze capturas renderizadas foram inspecionadas. Persistem os diagnósticos
+conhecidos de certificados e escrita de configuração no perfil Windows.
+
+Arquitetura, inventário completo, resultados, limites dos testes e checklist
+manual histórico e homologação recebida: `tests/VALIDACAO_M3_C.md`.
+
+```powershell
+godot --headless --path . --import
+godot --headless --path . --quit-after 60
+godot --headless --path . --fixed-fps 60 --log-file .godot/c-mechanisms_test.log --script res://tests/mechanisms_test.gd
+```
+
+## Homologação manual informada pelo responsável — 03/11/2026
+
+**M3-C — HOMOLOGADO FUNCIONALMENTE PELO RESPONSÁVEL.**
+
+**Playtest manual: 22/22 PASSOU — Nenhuma observação.**
+
+O responsável realizou o playtest completo no Godot e aprovou:
+
+1. Espinhos visíveis.
+2. Dano dos espinhos.
+3. Salto sobre espinhos.
+4. Lâmina oscilante.
+5. Esquiva da lâmina.
+6. Armadilha temporizada.
+7. Ciclo de ativação.
+8. Invulnerabilidade.
+9. Checkpoint 1.
+10. Checkpoint 2.
+11. Morte no CP1.
+12. Morte no CP2.
+13. Queda com vida.
+14. Restauração dos inimigos.
+15. Respawn seguro.
+16. Percurso de ida.
+17. Percurso de volta.
+18. Ponte das Almas.
+19. Encontro final.
+20. Controles e câmera.
+21. Dificuldade geral.
+22. Estabilidade.
+
+Decisão do responsável: M3-C homologado funcionalmente, sem correção obrigatória
+identificada. A homologação foi realizada e informada pelo responsável; não é
+uma auditoria independente nem um playtest executado pelo agente nesta tarefa.
+
+Preservados os resultados automatizados anteriores: 500/500 verificações,
+incluindo 423 dos marcos anteriores e 77 do M3-C, importação/inicialização,
+11 capturas, ida 5→4 HP, volta 4→3 HP, travessias locais e combate final sem dano.
+Diagnósticos Windows, falhas históricas de desenvolvimento e limitações técnicas
+permanecem documentados. A homologação humana não amplia a cobertura dos testes.
+
+Nesta etapa somente README e relatório receberam alterações documentais.
+Engine e suítes não foram reexecutadas. Implementação, cenas, parâmetros,
+coordenadas e regras homologadas foram preservados. M3-D não iniciado.
+
+**M3-C NÃO PUBLICADO. M3-D NÃO INICIADO.**
+Encerrar após o único commit local autorizado; aguardar nova autorização. Sem push ou deploy.
+
+---
+
+## Registro histórico homologado M3-B3
+
 # Cinzas do Juramento — M3-B3: Distribuição dos inimigos
 
 **M3-B3 — HOMOLOGADO FUNCIONALMENTE PELO RESPONSÁVEL.**

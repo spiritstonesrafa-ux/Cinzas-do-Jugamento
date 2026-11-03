@@ -41,6 +41,12 @@ func _restore_enemies() -> void:
 			(enemy as SkeletonPatrol).reset_enemy()
 		elif enemy is CursedRaven:
 			(enemy as CursedRaven).reset_enemy()
+	if has_node("Mechanisms"):
+		for mechanism: Node in $Mechanisms.get_children():
+			if mechanism is OscillatingBlade:
+				(mechanism as OscillatingBlade).reset_hazard()
+			elif mechanism is TimedSpikes:
+				(mechanism as TimedSpikes).reset_hazard()
 
 func sector_at(x: float) -> int:
 	for index: int in range(SECTOR_STARTS.size() - 1, -1, -1):
@@ -63,8 +69,8 @@ func _update_presentation() -> void:
 	if sector == 0:
 		hint_label.text = "INÍCIO  |  A/D: andar  Espaço: pular  J: espada"
 	elif absf(knight.position.x - $FutureCheckpoint1.position.x) < 64.0:
-		hint_label.text = "CP1 FUTURO — apenas marcação, sem ativação"
+		hint_label.text = "CP1 — retorno após morte"
 	elif absf(knight.position.x - $FutureCheckpoint2.position.x) < 48.0:
-		hint_label.text = "CP2 FUTURO — apenas marcação, sem ativação"
+		hint_label.text = "CP2 — retorno após morte"
 	elif knight.position.x >= $Finish.position.x - 32.0:
-		hint_label.text = "FIM PROVISÓRIO M3-A — aguarda playtest"
+		hint_label.text = "FIM PROVISÓRIO M3-C — aguarda playtest"

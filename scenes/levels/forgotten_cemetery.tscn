@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3]
+[gd_scene load_steps=30 format=3]
 
 [ext_resource type="Script" path="res://scripts/levels/forgotten_cemetery.gd" id="1_stage"]
 [ext_resource type="PackedScene" path="res://scenes/player/knight.tscn" id="2_knight"]
@@ -6,6 +6,11 @@
 [ext_resource type="Script" path="res://scripts/levels/cemetery_visual.gd" id="4_visual"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/skeleton_patrol.tscn" id="5_enemy"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/cursed_raven.tscn" id="6_raven"]
+
+[ext_resource type="PackedScene" path="res://scenes/props/damage_source.tscn" id="7_spikes"]
+[ext_resource type="PackedScene" path="res://scenes/props/oscillating_blade.tscn" id="8_blade"]
+[ext_resource type="PackedScene" path="res://scenes/props/timed_spikes.tscn" id="9_timed"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery_checkpoint.tscn" id="10_checkpoint"]
 
 [sub_resource type="RectangleShape2D" id="Shape_GateFloor"]
 size = Vector2(448, 164)
@@ -69,6 +74,26 @@ script = ExtResource("1_stage")
 
 [node name="Backdrop" type="Node2D" parent="."]
 script = ExtResource("4_visual")
+show_future_checkpoint_marks = false
+
+[node name="Mechanisms" type="Node2D" parent="."]
+
+[node name="GardenSpikes" parent="Mechanisms" instance=ExtResource("7_spikes")]
+position = Vector2(824,140)
+
+[node name="CryptBlade" parent="Mechanisms" instance=ExtResource("8_blade")]
+position = Vector2(1384,176)
+
+[node name="CathedralTimed" parent="Mechanisms" instance=ExtResource("9_timed")]
+position = Vector2(2016,156)
+
+[node name="Checkpoint1" parent="Mechanisms" instance=ExtResource("10_checkpoint")]
+position = Vector2(1176,180)
+progression_index = 1
+
+[node name="Checkpoint2" parent="Mechanisms" instance=ExtResource("10_checkpoint")]
+position = Vector2(1936,156)
+progression_index = 2
 
 [node name="WorldGeometry" type="Node2D" parent="."]
 
@@ -440,7 +465,7 @@ color = Color(0.7, 0.73, 0.71, 1)
 position = Vector2(48, 156)
 
 [node name="FutureCheckpoint1" type="Marker2D" parent="."]
-position = Vector2(1040, 156)
+position = Vector2(1176, 180)
 
 [node name="FutureCheckpoint2" type="Marker2D" parent="."]
 position = Vector2(1936, 156)

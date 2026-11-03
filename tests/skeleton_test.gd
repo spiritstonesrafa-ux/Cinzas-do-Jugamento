@@ -52,7 +52,7 @@ func _wait_respawn() -> bool:
 	return false
 
 func _run() -> void:
-	var main: Node = (load("res://scenes/main.tscn") as PackedScene).instantiate()
+	var main: Node = (load("res://tests/fixtures/m3_b3_main.tscn") as PackedScene).instantiate()
 	root.add_child(main)
 	_stage = main.get_node("ForgottenCemetery") as Node2D
 	_knight = _stage.get_node("Knight") as KnightController

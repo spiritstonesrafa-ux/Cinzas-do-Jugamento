@@ -105,7 +105,7 @@ func _leg(from: Rect2, to: Rect2, direction: int, offset: float) -> bool:
 	return false
 
 func _run() -> void:
-	var layout: String = "res://scenes/levels/forgotten_cemetery.tscn"
+	var layout: String = "res://tests/fixtures/m3_b3_cemetery.tscn"
 	for argument: String in OS.get_cmdline_user_args():
 		if argument.begins_with("--layout="):
 			layout = argument.trim_prefix("--layout=")
