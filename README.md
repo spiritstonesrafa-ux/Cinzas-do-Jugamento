@@ -1,3 +1,41 @@
+# M3-E — Homologação funcional registrada
+
+**M3-E — HOMOLOGADO FUNCIONALMENTE PELO RESPONSÁVEL.**
+
+**Playtest manual: 20/20 PASSOU — Nenhuma observação.**
+
+**Testes automatizados anteriores: 735/735 PASSOU.** Resultados da execução
+anterior, preservados sem reexecução nesta tarefa. Sessão gráfica anterior:
+231,087 s em 4K, média observada 60,042 FPS, p95 17,342 ms e 160 nós estáveis.
+A avaliação manual foi realizada e informada pelo responsável; a auditoria
+atual do agente abrange documentação, arquivos e Git. Os 20 itens recebidos
+estão registrados no relatório; o checklist histórico de 24 itens não foi
+preenchido por inferência.
+
+[Homologação, auditoria, metadados e resultados preservados](tests/VALIDACAO_M3_E.md).
+Commit autorizado somente local. Sem push; M4 não iniciado.
+
+## Histórico técnico M3-E preservado
+
+# Cinzas do Juramento — M3-E: Regressão Final e Polimento
+
+**M3-E — IMPLEMENTADO E VALIDADO TECNICAMENTE, PENDENTE DE PLAYTEST MANUAL E HOMOLOGAÇÃO.**
+
+**735 verificações distintas passaram:** 634 anteriores reexecutadas e 101 de
+integração nova, também repetidas em sessão gráfica fullscreen 4K de
+231.1 segundos. Cobrem dez mortes nos checkpoints, queda sem cura e
+percursos encadeados nos dois sentidos. Não houve mudança na arte, mecânicas,
+câmera ou configuração DISPLAY01 homologadas. Medições e limitações são
+separadas da avaliação manual na TCL.
+
+M3-D completo homologado e registrado no único commit local
+`369de2168d798b8e27a92ce406f4cbe666b8207d`. M3-E permanece local, sem staging/commit.
+Nenhum push. M4 não iniciado.
+
+[Relatório, métricas, inventário e checklist de 24 itens](tests/VALIDACAO_M3_E.md).
+
+## Histórico preservado — homologação M3-D
+
 ## Homologação registrada — 03/11/2026
 
 **M3-D — HOMOLOGADO FUNCIONAL E VISUALMENTE PELO RESPONSÁVEL.**
