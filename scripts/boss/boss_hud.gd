@@ -11,8 +11,10 @@ func _draw() -> void:
  draw_rect(Rect2(76,32,168,6),Color("89765e"))
  draw_rect(Rect2(77,33,166,4),Color("272337"))
  draw_rect(Rect2(77,33,166*float(boss.current_health)/boss.max_health,4),Color("8c3d55"))
+ if boss.phase==2:draw_string(font,Vector2(253,38),"II",HORIZONTAL_ALIGNMENT_LEFT,-1,7,Color("9de6d4"))
  var notice: String=""
  if boss.state==OathGuardian.State.INTRO:notice="O antigo protetor desperta."
+ elif boss.state==OathGuardian.State.PHASE_TRANSITION:notice="A maldição desperta."
  elif boss.state==OathGuardian.State.DEFEATED:notice="Guardião vencido · retorne pelo selo à esquerda"
  if not notice.is_empty():
   var text_width: float=font.get_string_size(notice,HORIZONTAL_ALIGNMENT_LEFT,-1,7).x

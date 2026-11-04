@@ -1,3 +1,56 @@
+# Cinzas do Juramento — M4-B: Combate avançado
+
+**M4-B — HOMOLOGADO FUNCIONALMENTE PELO RESPONSÁVEL.**
+
+Guardião com duas fases aos 50% de vida: pesado original, investida de até 72 px,
+varredura baixa e Onda do Juramento. Avisos distintos, direção comprometida,
+recuperação e reset de perigos; Aren, arena, arte M3 e DISPLAY01 preservados.
+Chama raster original image_gen; identidade e PNG homologado do chefe intactos.
+
+**946/946 verificações funcionais aprovadas** (794 anteriores + 152 novas),
+29 capturas finais nativas 4K, importação/inicialização aprovadas. Dois duelos
+físicos de 28,15 s: vitória sem dano e com um erro, sem cura ou teleporte.
+Medição gráfica real de 45.0 s: 60.00 FPS médios,
+p95 17.05 ms; não significa 60 FPS travados ou homologação humana.
+
+M4-A homologado 18/18 e publicado com M3-C/D/E em origin/main, commit
+`ab003475e4a39bc5d0b40d33292b54fd5c745404`.
+M4-B somente local, índice vazio, sem commit/push. M4-C não iniciado.
+
+F8/F5 reinicia; ao terminar a fase, siga à direita até o Selo do Guardião.
+A/D ou setas movem, Espaço/W/cima saltam, J ataca. Após vitória, selo esquerdo.
+[Relatório, parâmetros, evidências e checklist manual](tests/VALIDACAO_M4_B.md) ·
+[Arte original e prompt da onda](assets/art/m4b/PROVENANCE.md).
+
+## Homologação funcional informada pelo responsável — 03/11/2026
+
+**M4-B — HOMOLOGADO FUNCIONALMENTE PELO RESPONSÁVEL.**
+
+Aprovação funcional geral recebida: ataques, transformação, segunda fase,
+efeitos, morte de Aren, reinício e estabilidade funcionando normalmente;
+nenhum bug relatado. O responsável confirmou: “Sim, tudo funcionando normal.”
+Esta aprovação não representa preenchimento individual de 29/29 respostas;
+o checklist técnico histórico permanece preservado abaixo.
+
+**Decisão de balanceamento: Guardião do Juramento mantido como chefe introdutório.**
+
+O responsável avaliou o boss como fácil e adequado à introdução/tutorial.
+Isso não é defeito. HP, dano, velocidades, avisos, cooldowns, recuperações,
+padrões e transformação aos 50% permanecem intactos. O próximo chefe deverá
+exigir maior domínio por profundidade de padrões, com dificuldade justa;
+não será implementado agora. Decisão registrada em ROADMAP.md.
+
+Preservam-se os resultados técnicos anteriores: 946/946 verificações,
+152 também em execução gráfica, 29 capturas 4K e dois duelos de 28,15 s,
+sem dano e após um erro; medição real de 45,001 s, média 59,999 FPS,
+p95 17,047 ms e máximo 24,717 ms. Não houve reexecução da engine nesta
+etapa documental/Git. Avaliação humana e testes do agente são distintos.
+
+Autorizado um único commit local M4-B, sem push. M4-C somente após validar
+o commit; segunda fase do jogo e próximo chefe não iniciados.
+
+## Histórico preservado — M4-A homologado
+
 # Cinzas do Juramento — M4-A: Guardião do Juramento
 
 **M4-A — HOMOLOGADO FUNCIONAL E VISUALMENTE PELO RESPONSÁVEL.**

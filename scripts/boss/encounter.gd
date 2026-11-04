@@ -27,6 +27,7 @@ func _ready() -> void:
  add_child(entry)
  entry.body_entered.connect(_on_entry)
  hero.survival.respawn_requested.connect(_on_respawn)
+ hero.survival.died.connect(_on_death)
 func _on_entry(body: Node2D) -> void:
  if body==hero and not active and not hero.survival.is_dead:enter.call_deferred()
 func enter() -> void:
@@ -54,6 +55,8 @@ func enter() -> void:
 func _on_defeated() -> void:
  completed=true
  arena.get_node("LeftGate/CollisionShape2D").set_deferred("disabled",true)
+func _on_death() -> void:
+ if active:arena.get_node("Guardian").clear_dangers()
 func _on_respawn() -> void:
  if active:leave(false)
 func leave(return_from_victory: bool) -> void:

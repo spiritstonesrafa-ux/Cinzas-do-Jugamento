@@ -10,6 +10,24 @@ func set_direction(side: int) -> void:
  var center: Vector2=(HILT+TIP)*0.5
  position=Vector2(center.x*side,center.y)
  rotation=(TIP-HILT).angle()*side
+func configure(pattern: int, progress: float, side: int) -> void:
+ var endpoints: Array[Vector2]=blade_points(pattern,progress)
+ var start: Vector2=endpoints[0]
+ var finish: Vector2=endpoints[1]
+ position=Vector2((start.x+finish.x)*0.5*side,(start.y+finish.y)*0.5)
+ rotation=(finish-start).angle()*side
+ # Resource must be unique: the boss scene can be instantiated more than once.
+ if not shape.shape.resource_local_to_scene:
+  shape.shape=shape.shape.duplicate()
+  shape.shape.resource_local_to_scene=true
+ (shape.shape as RectangleShape2D).size=Vector2(start.distance_to(finish),THICKNESS)
+static func blade_points(pattern: int, progress: float) -> Array[Vector2]:
+ if pattern==1:return [Vector2(15,-14),Vector2(77,-14)]
+ if pattern==2:
+  var start: Vector2=Vector2(8,-14)
+  return [start,start+Vector2.from_angle(lerpf(-0.08,0.08,clampf(progress,0,1)))*78]
+ if pattern==3:return [Vector2(12,-30),Vector2(28,-2)]
+ return [HILT,TIP]
 func set_active(value: bool) -> void:
  active=value
  shape.set_deferred("disabled",not value)

@@ -43,3 +43,24 @@ Somente iniciar M1 depois que: (1) o projeto abrir e executar no computador do r
 - Nunca declarar PASS se o comando não foi executado.
 - Toda aprovação é do responsável, não do agente.
 - Git: somente ações de leitura até instrução explícita para versionar.
+
+## Decisão homologada M4-B — progressão dos chefes (03/11/2026)
+
+O Guardião do Juramento é o primeiro chefe de O Cemitério dos Esquecidos,
+concluindo o percurso na Catedral. Sua dificuldade é intencionalmente
+introdutória: ensina leitura de antecipações, esquiva/posicionamento,
+contra-ataques, recuperação e adaptação à segunda fase. Ser relativamente
+fácil não é defeito. M4-B homologado funcionalmente pelo responsável.
+
+Preservar HP 10, dano 1, velocidades, telegrafias, cooldowns, recuperações,
+padrões e transição aos 50% homologados. Não elevar dificuldade no M4-C.
+
+O segundo chefe deverá aumentar perceptivelmente a dificuldade por maior
+profundidade dos padrões e domínio do jogador, com justiça; não apenas HP
+ou dano maiores. Próximo chefe e segunda fase do jogo não iniciados.
+
+O plano macro do GDD v0.1 contém nomes provisórios anteriores; o cânone
+implementado da primeira fase é O Cemitério dos Esquecidos e seu chefe é o
+Guardião do Juramento. M4-C foi autorizado como conclusão deste encontro;
+continuidade deve limitar-se a gancho narrativo, sem acesso funcional a região
+inexistente, habilidade, item ou recompensa nova. Homologação do M4-C pendente.
