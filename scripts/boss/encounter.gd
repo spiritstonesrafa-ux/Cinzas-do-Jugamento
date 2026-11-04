@@ -67,7 +67,9 @@ func leave(return_from_victory: bool) -> void:
  stage.get_node("StageHUD").show()
  arena.get_node("BossHUD").hide()
  arena.get_node("ArenaCamera").enabled=false
- if return_from_victory:hero.reset_to(Vector2(2296,156))
+ if return_from_victory:
+  arena.get_node("Guardian/Conclusion").settle(true)
+  hero.reset_to(Vector2(2296,156))
  else:
   completed=false
   arena.get_node("Guardian").reset_encounter()
@@ -90,3 +92,9 @@ func _draw() -> void:
  draw_line(center+Vector2(-8,0),center+Vector2(8,0),Color("ba9865"),1)
  draw_line(center+Vector2(0,-8),center+Vector2(0,8),Color("ba9865"),1)
  draw_string(ThemeDB.fallback_font,Vector2(2300,77),"Selo do Guardião",HORIZONTAL_ALIGNMENT_LEFT,-1,7,Color("c4b99d"))
+
+func _process(_delta: float) -> void:
+ # Replace only the obsolete finish hint after this encounter's victory.
+ if completed and not active and hero.position.x>=2256:
+  stage.hint_label.text="CEMITÉRIO CONCLUÍDO · exploração livre"
+  stage.get_node("StageHUD/Presentation").queue_redraw()

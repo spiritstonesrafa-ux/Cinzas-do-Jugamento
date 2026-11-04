@@ -5,7 +5,11 @@ func _ready() -> void:
  texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR
  get_parent().get_node("Guardian").state_changed.connect(func(_value: int) -> void:queue_redraw())
 func _draw() -> void:
- draw_texture_rect(BACK,Rect2(0,0,320,180),false,Color(0.74,0.78,0.9))
+ var guardian: OathGuardian=get_parent().get_node("Guardian") as OathGuardian
+ var calm: float=0
+ if guardian.state==OathGuardian.State.DEFEATED and guardian.get_node("Conclusion").played:
+  calm=clampf(guardian.get_node("Conclusion").elapsed/2.6,0,1)
+ draw_texture_rect(BACK,Rect2(0,0,320,180),false,Color(0.74,0.78,0.9).lerp(Color(0.84,0.87,0.95),calm))
  draw_rect(Rect2(0,0,320,180),Color(0.025,0.045,0.065,0.15))
  var half: Vector2=STONE.get_size()*0.5
  for x: int in [0,304]:
@@ -18,7 +22,6 @@ func _draw() -> void:
  draw_rect(Rect2(0,156,320,2),Color("9ba9a6"))
  for x: int in range(16,320,32):
   draw_rect(Rect2(x,158,3,1),Color("ba9865"))
- var guardian: OathGuardian=get_parent().get_node("Guardian") as OathGuardian
  if guardian.state==OathGuardian.State.DEFEATED:
   draw_rect(Rect2(0,92,24,64),Color("14222f"))
   draw_arc(Vector2(14,120),10,0,TAU,24,Color("72b9b3"),1)

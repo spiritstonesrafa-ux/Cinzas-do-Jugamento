@@ -27,6 +27,7 @@ func _arm(start: Vector2,finish: Vector2,region: Rect2,tint: Color) -> void:
  draw_set_transform(Vector2.ZERO)
 func _draw() -> void:
  var boss: OathGuardian=get_parent() as OathGuardian
+ if boss.state==OathGuardian.State.DEFEATED and boss.get_node("Conclusion").played:return
  var frame: int=0
  if boss.state in [OathGuardian.State.TELEGRAPH,OathGuardian.State.PHASE_TRANSITION]:frame=1
  elif boss.state==OathGuardian.State.ATTACK:frame=2

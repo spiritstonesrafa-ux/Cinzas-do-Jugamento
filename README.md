@@ -1,3 +1,77 @@
+# Cinzas do Juramento — M4-C: Conclusão do Guardião
+
+**M4-C — HOMOLOGADO FUNCIONAL E VISUALMENTE PELO RESPONSÁVEL.**
+
+Derrota de 2,6 s com quatro poses originais, dissipação da maldição, armadura
+vazia persistente e conclusão de O Cemitério dos Esquecidos. Aren continua
+livre e o selo esquerdo abre imediatamente; saída precoce e reentrada seguras.
+Dificuldade introdutória, combate, controles, checkpoints e DISPLAY01 intactos.
+Sem áudio apropriado no projeto; sem região, chefe, item ou habilidade novos.
+
+**1013 verificações distintas aprovadas:** 946 herdadas + 59 físicas M4-C + oito
+de resolução. Novos testes também passaram em renderização: 67/67. Importação
+/startup aprovados; 17 capturas finais, sendo 14 nativas 4K e três nas outras
+resoluções solicitadas. Amostra gráfica real de 45.0 s:
+59.999 FPS médios, p95 17.048 ms, máximo 17.378 ms;
+não equivale a homologação humana ou garantia de 60 FPS travados.
+
+M4-B homologado funcionalmente de forma geral, sem bugs relatados ou checklist
+29/29 inferido, e registrado no único commit local
+`0cd1285f47987477f4ec620978ae9f6d6ec64ea2`.
+M4-C registrado nesta entrega local de homologação. Nenhum push nesta tarefa.
+Segunda fase do jogo e próximo chefe não iniciados.
+
+[Relatório, regras, evidências e checklist de 30 itens](tests/VALIDACAO_M4_C.md) ·
+[Arte de derrota, prompt e proveniência](assets/art/m4c/PROVENANCE.md).
+F8/F5 reinicia; vença o Guardião e retorne pelo selo à esquerda.
+
+## Homologação final informada pelo responsável — 04/11/2026
+
+**M4-C — HOMOLOGADO FUNCIONAL E VISUALMENTE PELO RESPONSÁVEL.**
+
+**Playtest manual: 13/13 PASSOU — Nenhuma observação.**
+
+**Validação automatizada anterior: 1013/1013 PASSOU.**
+
+O responsável realizou o playtest humano e aprovou os itens abaixo. O agente
+registra essa aprovação; não afirma ter realizado o playtest humano nem infere
+aprovação individual dos 30 itens do checklist técnico histórico.
+
+| Nº | Item informado pelo responsável | Resultado |
+|---|---|---|
+| 1 | Golpe final | PASSOU |
+| 2 | Animação de derrota | PASSOU |
+| 3 | Dissipação da maldição | PASSOU |
+| 4 | Armadura persistente | PASSOU |
+| 5 | Barra de vida | PASSOU |
+| 6 | Texto narrativo | PASSOU |
+| 7 | Controle de Aren | PASSOU |
+| 8 | Saída e retorno | PASSOU |
+| 9 | Reentrada após vencer | PASSOU |
+| 10 | Morte após vencer | PASSOU |
+| 11 | Morte antes de vencer | PASSOU |
+| 12 | Imagem e fluidez | PASSOU |
+| 13 | Sensação de conclusão | PASSOU |
+
+**O primeiro chefe e a conclusão da primeira fase estão homologados.**
+Guardião mantido como chefe introdutório: HP, dano, velocidades, quatro padrões,
+tempos, cooldowns, recuperações e transformação aos 50% preservados. Nenhum
+rebalanceamento, próxima região, segundo chefe ou novo marco foi iniciado.
+A próxima região permanece pendente do roadmap; o jogo inteiro não está concluído.
+
+Resultados anteriores preservados: 946 herdados + 59 funcionais + oito de
+resolução; execução gráfica 67/67, importação/inicialização aprovadas,
+17 capturas em quatro resoluções, sessão de 45,001 s, média 59,999 FPS,
+p95 17,048 ms, máximo 17,378 ms e 182 nós estáveis. Suítes, importação,
+startup e benchmark não foram repetidos nesta etapa. Houve apenas consulta
+auxiliar de integridade da configuração e do PNG na Godot 4.7.2, sem carregar
+a cena jogável, sem novos resultados de combate ou desempenho.
+
+Autorizado exatamente um commit local M4-C. Sem push, tag, release ou
+sincronização automática. Próximo marco depende de nova autorização.
+
+## Histórico preservado — M4-B homologado
+
 # Cinzas do Juramento — M4-B: Combate avançado
 
 **M4-B — HOMOLOGADO FUNCIONALMENTE PELO RESPONSÁVEL.**

@@ -64,3 +64,14 @@ implementado da primeira fase é O Cemitério dos Esquecidos e seu chefe é o
 Guardião do Juramento. M4-C foi autorizado como conclusão deste encontro;
 continuidade deve limitar-se a gancho narrativo, sem acesso funcional a região
 inexistente, habilidade, item ou recompensa nova. Homologação do M4-C pendente.
+
+## M4-C — conclusão homologada (04/11/2026)
+
+Derrota de 2,6 s, armadura vazia, ruptura de um elo da maldição e conclusão de
+O Cemitério dos Esquecidos integradas ao selo/retorno existentes. Combate
+introdutório M4-B preservado. Estado de vitória só na sessão, sem save global.
+Nenhuma nova região, próximo chefe, equipamento ou habilidade foi iniciado.
+Sem anúncio de acesso funcional a uma fase inexistente. Relatório e checklist
+em tests/VALIDACAO_M4_C.md. Homologado funcional e visualmente pelo responsável:
+13/13 PASSOU, nenhuma observação. Primeiro chefe e conclusão da primeira fase
+homologados; próxima região e novo marco aguardam autorização.
